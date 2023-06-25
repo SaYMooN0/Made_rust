@@ -1,0 +1,17 @@
+.div1{
+    background-color: var(--main-backcolor);
+}
+.div2{
+    background-color: var(--second-backcolor);
+}
+.div3{
+    background-color: var(--main-frontcolor);
+}
+.div4{
+    background-color: var(--second-frontcolor);
+}
+div{
+    height: 100px;
+    width: 200px;
+    margin-top: 10px;
+}  
