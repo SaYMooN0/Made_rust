@@ -19,18 +19,26 @@ body {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 5fr;
-
 }
+    .main-buttons:hover {
+        background-color: var(--second-backcolor);
+    }
 .project-icon{
-    width: 100%;
+    width: calc(1vh+1vw);
     align-self: center;
 }
 .project-text {
-    font-size: 4vmin;
-    height: 100%;
-    margin-top: 0;
+    font-size: calc(1.9vw + 1.9vh);
+    margin-top: calc(-1.5vh - 0.75vw);
+    height: 160%;
     text-align: center;
-    display: flex;            /* новое свойство */
-    align-items: center;      /* новое свойство */
-    justify-content: center; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--second-backcolor);
+    font-family: 'Figtree';
+    letter-spacing: 2px;
+}
+.svg-path {
+    fill: var(--second-backcolor);
 }
