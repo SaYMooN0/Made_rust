@@ -1,17 +1,36 @@
-.div1{
+body {
     background-color: var(--main-backcolor);
 }
-.div2{
-    background-color: var(--second-backcolor);
+
+.button-container {
+    background-color: transparent;
+    display: grid;
+    position: absolute;
+    width: 20%;
+    height: 30%;
+    top: 60%;
+    left: 40%;
+    row-gap: 4%;
+    grid-template-rows: 1fr 1fr 1fr;
+
 }
-.div3{
-    background-color: var(--main-frontcolor);
+.main-buttons {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+
 }
-.div4{
-    background-color: var(--second-frontcolor);
+.project-icon{
+    width: 100%;
+    align-self: center;
 }
-div{
-    height: 100px;
-    width: 200px;
-    margin-top: 10px;
-}  
+.project-text {
+    font-size: 4vmin;
+    height: 100%;
+    margin-top: 0;
+    text-align: center;
+    display: flex;            /* новое свойство */
+    align-items: center;      /* новое свойство */
+    justify-content: center; 
+}
