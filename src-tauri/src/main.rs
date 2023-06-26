@@ -19,20 +19,9 @@ fn greet(name: &str) -> String {
 
 
 mod theme;
+mod themes_collection;
 fn main() {
-    let theme = match theme::Theme::from_file(String::from("../src/themes_css/default_light.css")) {
-        Ok(theme) => {
-            // Здесь 'theme' является экземпляром структуры Theme
-            println!("Theme created:");
-            theme
-        },
-        Err(e) => {
-            // Если возникла ошибка, выведем её
-            eprintln!("Failed to create a theme----1:");
-            return; // Если не удалось создать тему, выходим из функции
-        }
-    };
-
+    let mut themes_collection =themes_collection::ThemesCollection::new();
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![greet])
         .invoke_handler(tauri::generate_handler![get_color])

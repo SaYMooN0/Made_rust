@@ -1,6 +1,6 @@
+use regex::Regex;
 use std::fs::File;
 use std::io::prelude::*;
-use regex::Regex;
 pub struct Theme {
     name: String,
     main_back: String,
@@ -12,6 +12,17 @@ pub struct Theme {
 }
 
 impl Theme {
+    pub fn default() -> Theme {
+        Theme {
+            name: "default".to_string(),
+            main_back: "#000000".to_string(),
+            second_back: "#000000".to_string(),
+            main_front: "#FFFFFF".to_string(),
+            second_front: "#FFFFFF".to_string(),
+            main_bright: "#444444".to_string(),
+            second_bright:"#444444".to_string(),
+        }
+    }
     pub fn new(
         name: String,
         main_back: String,
@@ -40,7 +51,9 @@ impl Theme {
         let mut contents = String::new();
         file.read_to_string(&mut contents)?;
 
-        let re = Regex::new(r"--main-backcolor:\s*(.*?);\s*--second-backcolor:\s*(.*?);\s*--main-frontcolor:\s*(.*?);\s*--second-frontcolor:\s*(.*?);\s*--main-brightcolor:\s*(.*?);\s*--second-brightcolor:\s*(.*?);")?;
+        let re = Regex::new(
+            r"--main-backcolor:\s*(.*?);\s*--second-backcolor:\s*(.*?);\s*--main-frontcolor:\s*(.*?);\s*--second-frontcolor:\s*(.*?);\s*--main-brightcolor:\s*(.*?);\s*--second-brightcolor:\s*(.*?);",
+        )?;
 
         let caps = re
             .captures(&contents)
@@ -55,5 +68,16 @@ impl Theme {
             main_bright: caps[5].to_string(),
             second_bright: caps[6].to_string(),
         })
+    }
+    pub fn clone(&self) -> Self {
+        Theme {
+            name: self.name.clone(),
+            main_back: self.main_back.clone(),
+            second_back: self.second_back.clone(),
+            main_front: self.main_front.clone(),
+            second_front: self.second_front.clone(),
+            main_bright: self.main_bright.clone(),
+            second_bright: self.second_bright.clone(),
+        }
     }
 }
