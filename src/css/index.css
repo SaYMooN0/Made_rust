@@ -14,19 +14,27 @@ body {
     grid-template-rows: 1fr 1fr 1fr;
 
 }
+
 .main-buttons {
     height: 100%;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 5fr;
 }
-    .main-buttons:hover {
-        background-color: var(--second-backcolor);
-    }
-.project-icon{
+
+.main-buttons:hover .project-text {
+    color: var(--main-frontcolor);
+}
+
+.main-buttons:hover .svg-path {
+    fill: var(--main-frontcolor);
+}
+
+.project-icon {
     width: calc(1vh+1vw);
     align-self: center;
 }
+
 .project-text {
     font-size: calc(1.9vw + 1.9vh);
     margin-top: calc(-1.5vh - 0.75vw);
@@ -39,6 +47,7 @@ body {
     font-family: 'Figtree';
     letter-spacing: 2px;
 }
+
 .svg-path {
     fill: var(--second-backcolor);
 }
