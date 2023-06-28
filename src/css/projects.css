@@ -1,0 +1,18 @@
+body {
+    background-color: var(--main-backcolor);
+}
+.project-header{
+    position: absolute;
+    top:10%;
+    left: 10%;
+    background-color: darkgray;
+    height: 20%;
+    width: 40%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--second-backcolor);
+    font-family: 'Figtree';
+    letter-spacing: 2px;
+}
