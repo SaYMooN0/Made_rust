@@ -3,14 +3,15 @@ const { invoke } = window.__TAURI__.tauri;
 
 
 async function setThemeOnStart() {
-  var linkElement = document.querySelector('#theme-link');
-  //switchTheme("default_light");
+  var linkElement = document.getElementById('theme-link');
+  let theme=await invoke("get_current_theme_name");
+  linkElement.href = './themes_css/' + theme+".css";
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
- 
   await setThemeOnStart();
-  document.getElementById("div1").addEventListener("click", () => switchTheme("default_light.css"));
+
+  //document.getElementById("div1").addEventListener("click", () => switchTheme("default_light.css"));
 });
 
 
