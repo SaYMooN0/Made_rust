@@ -33,7 +33,7 @@ body {
 
 .projects-container::-webkit-scrollbar-thumb {
     background: var(--main-frontcolor);
-    border-radius: calc(0.18vw + 0.18vh + 2px);
+    border-radius: calc(0.12vw + 0.08vh + 2px);
 }
 
     .projects-container::-webkit-scrollbar-thumb:hover {
