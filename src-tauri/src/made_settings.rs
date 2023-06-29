@@ -3,12 +3,14 @@ use std::io::{Read, Write};
 use std::str::FromStr;
 use std::path::Path;
 use std::fmt;
+use std::collections::HashMap;
 pub struct made_settings {
     current_theme: Theme,
+    projects: HashMap<String, String>,
 }
 impl made_settings {
     pub fn new() -> Self {
-        let file_path = Path::new("settings.made");
+        let file_path = Path::new("themes.madeSettings");
         let default_theme_str = "dark";
         let default_theme = Theme::Dark;
 
@@ -35,7 +37,7 @@ impl made_settings {
             default_theme
         });
 
-        made_settings { current_theme }
+        made_settings { current_theme, projects: HashMap::new() }
     }
 
     pub fn get_current_theme(&self) -> String {

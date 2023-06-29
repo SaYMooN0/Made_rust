@@ -1,8 +1,11 @@
 :root {
     --main-backcolor: #29282C;
-    --second-backcolor: #444552;
-    --main-frontcolor: #524F9D;
-    --second-frontcolor: #222b48;
-    --main-brightcolor: #171020; 
-    --second-brightcolor: #222b48;
+    --second-backcolor: #31323B;
+    --third-backcolor: #423D4D;
+    --main-frontcolor: #E7DFF7;
+    --second-frontcolor: #D4BFFD;
+    --third-frontcolor: #A17EE6;
+    --main-brightcolor: #8B6CD4; 
+    --second-brightcolor: #7E54D5;
+    --third-brightcolor: #5A39AD;
   }

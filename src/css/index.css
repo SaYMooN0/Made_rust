@@ -23,11 +23,11 @@ body {
 }
 
 .main-buttons:hover .project-text {
-    color: var(--main-frontcolor);
+    color: var(--third-frontcolor);
 }
 
 .main-buttons:hover .svg-path {
-    fill: var(--main-frontcolor);
+    fill: var(--third-frontcolor);
 }
 
 .project-icon {
@@ -43,11 +43,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--second-backcolor);
+    color: var(--main-frontcolor);
     font-family: 'Figtree';
     letter-spacing: 2px;
 }
 
 .svg-path {
-    fill: var(--second-backcolor);
+    fill: var(--main-frontcolor);
 }

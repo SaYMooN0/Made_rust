@@ -7,7 +7,7 @@ body {
     left: calc(4vw + 20px);
     text-align: center;
     display: inline-block;
-    color: var(--second-backcolor);
+    color: var(--main-frontcolor);
     font-family: 'Figtree';
     letter-spacing: 2px;
     font-size: calc(2.3vh + 2vw + 8px);
@@ -20,9 +20,27 @@ body {
     width: 40%;
     height: 65%;
     background-color: aquamarine;
+    overflow-y: auto;
 }
+
+.projects-container::-webkit-scrollbar {
+    width: calc(0.3vw + 6px) ;
+}
+
+.projects-container::-webkit-scrollbar-track {
+    background: var(--third-backcolor)
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+    background: var(--main-frontcolor);
+    border-radius: calc(0.18vw + 0.18vh + 2px);
+}
+
+    .projects-container::-webkit-scrollbar-thumb:hover {
+        background:var(--third-frontcolor);
+    }
 .project-link{
-    height: 30%;
+    height: 20%;
     width: 100%;
     margin-top: 1%;
     background-color: darksalmon;
