@@ -37,7 +37,7 @@ impl Project {
                     items_collection.push(item.trim().to_string());
                 }
             } else if parsing_tags {
-                if let Some(tag) = line.strip_prefix('#').map(|s| s.trim()) {
+                if let Some(tag) = line.strip_suffix(';').map(|s| s.trim()) {
                     tags_collection.push(tag.to_string());
                 }
             }
