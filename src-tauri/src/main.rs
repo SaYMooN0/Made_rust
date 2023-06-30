@@ -62,27 +62,6 @@ fn get_project_version(file_path: String) -> String {
     }
 }
 fn main() {
-    let file_path ="C:/Users/SaYMooNchik/curseforge/minecraft/Instances/test 1.19/test 1.19.madeProject";
-    match Project::new(file_path) {
-        Ok(project) => {
-            println!("Name: {}", project.name);
-            println!("Version: {}", project.version);
-            println!("Path: {}", project.path);
-            println!("Items Collection:");
-            for item in &project.items_collection {
-                println!("{}", item);
-            }
-            println!("Tags Collection:");
-            for tag in &project.tags_collection {
-                println!("{}", tag);
-            }
-        }
-        Err(err) => {
-            eprintln!("Error: {}", err);
-        }
-    }
-
-
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![get_current_theme_name, add_project, get_projects])
         .run(tauri::generate_context!())

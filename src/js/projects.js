@@ -11,36 +11,48 @@ function projectLinkClicked()
     pr.textContent="clicked";
     pr.textContent = this.textContent;
 }
+function generateProjectLink(projectInfo)
+{
+    projectsContainer = document.getElementById('projects-container');
+    let projectItem={},projectTextName={}, projectTextPath={};
+    projectItem = document.createElement('div');
+    projectItem.className = "project-item";
+    pr.textContent = "3";
+    projectItem.id = "prj_item_"+projectInfo[1];
+    projectItem.addEventListener('click', projectLinkClicked);
+    pr.textContent = "4";
+    projectTextName=document.createElement('p');
+    projectTextName.textContent = projectInfo[0]+" - "+projectInfo[2];
+    projectTextName.className = "project-text-name";
+    projectItem.appendChild(projectTextName);
+
+    projectTextPath=document.createElement('p');
+    projectTextPath.textContent = projectInfo[1];
+    projectTextPath.className = "project-text-path";
+    projectItem.appendChild(projectTextPath);
+
+    projectsContainer.appendChild(projectItem);
+}
 async function setProjects() {
     
-    projectsContainer = document.getElementById('projects-container');
+    
     let projects = await invoke("get_projects");
-    let projectItem={};
-    let projectTextName={}, projectTextPath={};
-    for (const [key, value] of Object.entries(projects)) {
-        projectItem = document.createElement('div');
-        projectItem.className = "project-item";
-        projectItem.id = "prj_item_"+key;
-        projectItem.addEventListener('click', projectLinkClicked);
-      
-        projectTextName=document.createElement('p');
-        projectTextName.textContent = key;
-        projectTextName.className = "project-text-name";
-        projectItem.appendChild(projectTextName);
-
-        projectTextPath=document.createElement('p');
-        projectTextPath.textContent = value;
-        projectTextPath.className = "project-text-path";
-        projectItem.appendChild(projectTextPath);
-
-        projectsContainer.appendChild(projectItem);
+    let projectInfo;
+    for (let i = 0; i < projects.length; i++) {
+        pr.textContent = projects[i]+"  "+i;
+        projectInfo = projects[i].toString().split(',');
+        if(projectInfo.length==3&&projectInfo[2]!="-0")
+        {
+            generateProjectLink(projectInfo);
+        }
+        
     }
     pr.textContent = "worked";
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
     pr = document.getElementById('project-header');
-    pr.textContent = "projects";
+    pr.textContent = "before setProjects";
     await setProjects();
     await setThemeOnStart();
    
