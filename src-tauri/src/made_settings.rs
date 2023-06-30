@@ -1,16 +1,16 @@
 use std::collections::HashMap;
 use std::fmt;
 use std::fs::{File, OpenOptions};
-use std::io::{Read, Write, Seek, SeekFrom};
+use std::io::{Read, Write};
 use std::path::Path;
 use std::str::FromStr;
 
-pub struct made_settings {
+pub struct MadeSettings {
     current_theme: Theme,
     projects: HashMap<String, String>,
 }
 
-impl made_settings {
+impl MadeSettings {
     pub fn new() -> Self {
         let theme_file_path = Path::new("themes.madeSettings");
         let links_file_path = Path::new("links.madeSettings");
@@ -37,7 +37,7 @@ impl made_settings {
             }
         }
 
-        made_settings {
+        MadeSettings {
             current_theme,
             projects,
         }
