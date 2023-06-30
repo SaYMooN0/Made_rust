@@ -1,7 +1,8 @@
 body {
     background-color: var(--main-backcolor);
 }
-.project-header{
+
+.project-header {
     position: absolute;
     top: 10px;
     left: calc(4vw + 20px);
@@ -13,18 +14,18 @@ body {
     font-size: calc(2.3vh + 2vw + 8px);
     font-weight: 600;
 }
-.projects-container{
+
+.projects-container {
     position: absolute;
     top: 22%;
     left: calc(4vw + 20px);
     width: 40%;
     height: 65%;
-    background-color: aquamarine;
     overflow-y: auto;
 }
 
 .projects-container::-webkit-scrollbar {
-    width: calc(0.3vw + 6px) ;
+    width: calc(0.3vw + 6px);
 }
 
 .projects-container::-webkit-scrollbar-track {
@@ -36,12 +37,27 @@ body {
     border-radius: calc(0.12vw + 0.08vh + 2px);
 }
 
-    .projects-container::-webkit-scrollbar-thumb:hover {
-        background:var(--third-frontcolor);
-    }
-.project-link{
-    height: 20%;
+.projects-container::-webkit-scrollbar-thumb:hover {
+    background: var(--third-frontcolor);
+}
+
+.project-item {
+    height: calc(40px + 10%);
     width: 100%;
-    margin-top: 1%;
-    background-color: darksalmon;
+    margin-top: 1px;
+    background-color: var(--main-backcolor);
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+}
+
+.project-item:hover {
+    background-color: var(--second-backcolor);
+}
+
+.project-text-name {
+    color: aquamarine;
+}
+
+.project-text-path {
+    color: darkseagreen;
 }
