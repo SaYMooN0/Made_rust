@@ -12,7 +12,7 @@ function projectLinkClicked() {
 }
 function createCorruptedSign(id) {
     let sign = document.createElement('div');
-    sign.innerHTML = '<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --><svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 15H12.01M12 12V9M4.98207 19H19.0179C20.5615 19 21.5233 17.3256 20.7455 15.9923L13.7276 3.96153C12.9558 2.63852 11.0442 2.63852 10.2724 3.96153L3.25452 15.9923C2.47675 17.3256 3.43849 19 4.98207 19Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    sign.innerHTML = '<?xml version="1.0" encoding="utf-8"?><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 15H12.01M12 12V9M4.98207 19H19.0179C20.5615 19 21.5233 17.3256 20.7455 15.9923L13.7276 3.96153C12.9558 2.63852 11.0442 2.63852 10.2724 3.96153L3.25452 15.9923C2.47675 17.3256 3.43849 19 4.98207 19Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     return sign;
 }
 function generateProjectLink(projectInfo) {
@@ -34,7 +34,14 @@ function generateProjectLink(projectInfo) {
     projectItem.appendChild(projectTextPath);
 
     projectMoreButton = document.createElement('svg');
+    projectMoreButton.innerHTML = '<?xml version="1.0" encoding="iso-8859-1"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 342.382 342.382"xml:space="preserve"><g> <g> <g><path d="M45.225,125.972C20.284,125.972,0,146.256,0,171.191c0,24.94,20.284,45.219,45.225,45.219c24.926,0,45.219-20.278,45.219-45.219C90.444,146.256,70.151,125.972,45.225,125.972z"/></g><g> <path d="M173.409,125.972c-24.938,0-45.225,20.284-45.225,45.219c0,24.94,20.287,45.219,45.225,45.219c24.936,0,45.226-20.278,45.226-45.219C218.635,146.256,198.345,125.972,173.409,125.972z"/></g><g><path d="M297.165,125.972c-24.932,0-45.222,20.284-45.222,45.219c0,24.94,20.29,45.219,45.222,45.219 c24.926,0,45.217-20.278,45.217-45.219C342.382,146.256,322.091,125.972,297.165,125.972z"/></g>  </g></g> </svg>';
     projectMoreButton.className = "project-more-button";
+    projectMoreButton.addEventListener('mouseover', function() {
+        this.parentNode.style.backgroundColor = 'var(--main-backcolor)';
+    });
+    projectMoreButton.addEventListener('mouseout', function() {
+        this.parentNode.style.backgroundColor = '';
+    });
     projectItem.appendChild(projectMoreButton);
 
     //if (projectInfo[2] != "-0") {
@@ -57,7 +64,6 @@ async function setProjects() {
     let projects = await invoke("get_projects");
     let projectInfo;
     for (let i = 0; i < projects.length; i++) {
-        pr.textContent = projects[i] + "  " + i;
         projectInfo = projects[i].toString().split(',');
         if (projectInfo.length == 3) {
             generateProjectLink(projectInfo);
@@ -68,7 +74,6 @@ async function setProjects() {
 
 window.addEventListener("DOMContentLoaded", async () => {
     pr = document.getElementById('project-header');
-    pr.textContent = "before setProjects";
     await setProjects();
     await setThemeOnStart();
 
