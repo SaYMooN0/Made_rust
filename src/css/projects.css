@@ -18,8 +18,8 @@ body {
 .projects-container {
     position: absolute;
     top: 22%;
-    left: calc(4vw + 20px);
-    width: 40%;
+    left: calc(3vw + 20px);
+    width: calc(40px + 45%);
     height: 65%;
     overflow-y: auto;
 }
@@ -42,12 +42,19 @@ body {
 }
 
 .project-item {
+
     height: calc(40px + 10%);
     width: 100%;
-    margin-top: 1px;
+    margin-top: 0;
     background-color: var(--main-backcolor);
     display: grid;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-areas:
+    "name name name .  .  vrsn more"
+    "name name name .  .  vrsn . "
+    "path path path path path path path";
+
 }
 
 .project-item:hover {
@@ -55,9 +62,25 @@ body {
 }
 
 .project-text-name {
-    color: aquamarine;
+    background-color: aquamarine;
+    height: 100%;
+    width: 100%;
+    grid-area: name;
 }
 
 .project-text-path {
-    color: darkseagreen;
+    background-color: darkseagreen;
+    height: 100%;
+    width: 100%;
+    grid-area: path;
+}
+.project-text-version {
+    background-color: darkturquoise;
+    height: 100%;
+    width: 100%;
+    grid-area: vrsn;
+}
+.project-more-button {
+    background-color: hotpink;
+    grid-area: more;
 }
