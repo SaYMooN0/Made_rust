@@ -43,17 +43,17 @@ body {
 
 .project-item {
 
-    height: calc(40px + 10%);
+    height: calc(20px + 12%);
+    max-width: 100%;;
     width: 100%;
     margin-top: 0;
     background-color: var(--main-backcolor);
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 3fr 2fr;
     grid-template-columns: repeat(7, 1fr);
     grid-template-areas:
-    "name name name .  .  vrsn more"
-    "name name name .  .  vrsn . "
-    "path path path path path path path";
+        "name name name .  .  vrsn more"
+        "path path path path path path path ";
 
 }
 
@@ -62,25 +62,38 @@ body {
 }
 
 .project-text-name {
-    background-color: aquamarine;
-    height: 100%;
-    width: 100%;
     grid-area: name;
+    height: 80%;
+    color: var(--second-frontcolor);
+    font-family: 'Figtree';
+    margin-top: -2%;
+    font-size: calc(1.44vh + 1.47vw);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
 }
 
 .project-text-path {
-    background-color: darkseagreen;
-    height: 100%;
-    width: 100%;
     grid-area: path;
+    height: 80%;
+    color: var(--main-frontcolor);
+    font-family: 'Figtree';
+    margin-top: -1.5%;
+    font-size: calc(0.6vh + 0.6vw);
+    text-align: left;
+
+
 }
+
 .project-text-version {
-    background-color: darkturquoise;
-    height: 100%;
     width: 100%;
+    background-color: darkturquoise;
     grid-area: vrsn;
 }
+
 .project-more-button {
+    width: 100%;
     background-color: hotpink;
     grid-area: more;
 }

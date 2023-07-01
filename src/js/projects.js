@@ -64,7 +64,6 @@ async function setProjects() {
         }
 
     }
-    pr.textContent = "worked";
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
