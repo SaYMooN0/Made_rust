@@ -111,3 +111,16 @@ body {
 {
     fill: var(--main-brightcolor);
 }
+.corrupted-sign
+{
+    margin-top: 2%;
+    grid-area: vrsn;
+    width: calc(6px + 45%);
+    aspect-ratio: 1/1;
+}
+
+.corrupted-sign:hover .corrupted-sign-line
+{
+    stroke: #930336;
+    stroke-width: 2.5;
+}
