@@ -10,7 +10,7 @@ function projectLinkClicked() {
     pr.textContent = "clicked";
     pr.textContent = this.textContent;
 }
-function createCorruptedSign(id) {
+function createCorruptedSign(name) {
     let sign = document.createElement('div');
     sign.className = "corrupted-sign";
     sign.innerHTML = '<?xml version="1.0" encoding="utf-8"?><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 15H12.01M12 12V9M4.98207 19H19.0179C20.5615 19 21.5233 17.3256 20.7455 15.9923L13.7276 3.96153C12.9558 2.63852 11.0442 2.63852 10.2724 3.96153L3.25452 15.9923C2.47675 17.3256 3.43849 19 4.98207 19Z" stroke="#7E032A" class="corrupted-sign-line" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -20,6 +20,31 @@ function createCorruptedSign(id) {
     sign.addEventListener('mouseout', function() {
         this.parentNode.style.backgroundColor = '';
     });
+
+    // Создание диалогового окна
+    let dialog = document.createElement('dialog');
+    dialog.innerHTML = `
+        <p>The Made file is corrupted and cannot be opened. File recovery is very unlikely. In this situation, it is recommended to delete it and recreate it. Deleting the Made file will not entail any changes in your modpack. Only data about collections of items and tags inside Made will be lost. Would you like to delete a corrupted file:</p>
+        <button id="cancel">Cancel</button>
+        <button id="delete">Delete</button>
+    `;
+
+    // Навешивание обработчиков событий на кнопки
+    dialog.querySelector("#cancel").addEventListener('click', function() {
+        dialog.close();
+    });
+    dialog.querySelector("#delete").addEventListener('click', function() {
+        dialog.close();
+        // Здесь можно добавить код для удаления или другого действия
+    });
+
+    document.body.appendChild(dialog);  // Добавление диалогового окна в DOM
+
+    // Показывать диалоговое окно при клике на sign
+    sign.addEventListener('click', function() {
+        dialog.showModal();
+    });
+
     return sign;
 }
 function generateProjectLink(projectInfo) {
@@ -28,7 +53,7 @@ function generateProjectLink(projectInfo) {
     projectItem = document.createElement('div');
     projectItem.className = "project-item";
     projectItem.id = "prj_item_" + projectInfo[1];
-    projectItem.addEventListener('click', projectLinkClicked);
+    //projectItem.addEventListener('click', projectLinkClicked);
 
     projectTextName = document.createElement('p');
     projectTextName.className = "project-text-name";
@@ -58,7 +83,7 @@ function generateProjectLink(projectInfo) {
         projectItem.appendChild(projectTextVersion);
     }
     else {
-        projectTextVersion = createCorruptedSign();
+        projectTextVersion = createCorruptedSign(projectInfo[0]);
     }
 
     projectItem.appendChild(projectTextVersion);
