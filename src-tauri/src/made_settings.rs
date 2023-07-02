@@ -4,7 +4,9 @@ use std::fs::{File, OpenOptions};
 use std::io::{Read, Write};
 use std::path::Path;
 use std::str::FromStr;
-
+use std::fs;
+use std::io::prelude::*;
+use std::io::BufReader;
 pub struct MadeSettings {
     current_theme: Theme,
     projects: HashMap<String, String>,
@@ -79,22 +81,33 @@ impl MadeSettings {
         self.projects.clone()
     }
     pub fn add_project(&mut self, name: String, path: String) {
-        // Add to the HashMap
         self.projects.insert(name.clone(), path.clone());
-
-        // Now write to the file
         let links_file_path = Path::new("links.madeSettings");
         let mut file = OpenOptions::new()
             .write(true)
             .append(true)
             .open(&links_file_path)
             .expect("Failed to open file");
-
-        // Always add a new line before the project
         writeln!(file).expect("Failed to write new line to file");
-
-        // Now write the new project
         writeln!(file, "{}={}", name, path).expect("Failed to write to file");
+    }
+    pub fn remove_project(&mut self, key: String) -> std::io::Result<()> {
+        self.projects.remove(&key);  // Удаление ключа из HashMap.
+
+        let file_path = "links.madeSettings";
+        let file = File::open(file_path)?;
+        let reader = BufReader::new(file);
+
+        // Проходим через каждую строку и собираем те, которые не начинаются с указанного ключа.
+        let lines: std::io::Result<Vec<String>> = reader.lines().collect();
+        let filtered_lines: Vec<String> = lines?.into_iter()
+            .filter(|line| !line.starts_with(&format!("{}=", key)))
+            .collect();
+
+        // Записываем обратно в файл.
+        fs::write(file_path, filtered_lines.join("\n"))?;
+
+        Ok(())
     }
 }
 enum Theme {

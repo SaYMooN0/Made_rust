@@ -20,27 +20,24 @@ function createCorruptedSign(name) {
     sign.addEventListener('mouseout', function() {
         this.parentNode.style.backgroundColor = '';
     });
-
-    // Создание диалогового окна
     let dialog = document.createElement('dialog');
     dialog.innerHTML = `
-        <p>The Made file is corrupted and cannot be opened. File recovery is very unlikely. In this situation, it is recommended to delete it and recreate it. Deleting the Made file will not entail any changes in your modpack. Only data about collections of items and tags inside Made will be lost. Would you like to delete a corrupted file:</p>
+        <p>The Made file "${name}" is corrupted and cannot be opened. File recovery is very unlikely. In this situation, it is recommended to delete it and recreate it. Deleting the Made file will not entail any changes in your modpack. Only data about collections of items and tags inside Made will be lost. Would you like to delete a corrupted file:</p>
         <button id="cancel">Cancel</button>
         <button id="delete">Delete</button>
     `;
-
-    // Навешивание обработчиков событий на кнопки
     dialog.querySelector("#cancel").addEventListener('click', function() {
         dialog.close();
     });
     dialog.querySelector("#delete").addEventListener('click', function() {
+        
+        let projectToDelete = document.getElementById("prj_item_" + name);
+        projectToDelete.remove();
         dialog.close();
-        // Здесь можно добавить код для удаления или другого действия
+        invoke("remove_project", { name: name });
     });
 
-    document.body.appendChild(dialog);  // Добавление диалогового окна в DOM
-
-    // Показывать диалоговое окно при клике на sign
+    document.body.appendChild(dialog);
     sign.addEventListener('click', function() {
         dialog.showModal();
     });
@@ -52,7 +49,7 @@ function generateProjectLink(projectInfo) {
     let projectItem = {}, projectTextName = {}, projectTextPath = {}, projectMoreButton = {}, projectTextVersion = {};
     projectItem = document.createElement('div');
     projectItem.className = "project-item";
-    projectItem.id = "prj_item_" + projectInfo[1];
+    projectItem.id = "prj_item_" + projectInfo[0];
     //projectItem.addEventListener('click', projectLinkClicked);
 
     projectTextName = document.createElement('p');

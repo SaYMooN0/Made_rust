@@ -35,6 +35,11 @@ fn add_project(name:String,path:String){
     let mut setting_for_made = SETTINGS.lock().unwrap();
     setting_for_made.add_project(name, path);
 }
+#[tauri::command]
+fn remove_project(name:String){
+    let mut setting_for_made = SETTINGS.lock().unwrap();
+    setting_for_made.remove_project(name);
+}
 fn get_project_version(file_path: String) -> String {
     let path = Path::new(&file_path);
     match File::open(&path) {
@@ -63,7 +68,7 @@ fn get_project_version(file_path: String) -> String {
 }
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![get_current_theme_name, add_project, get_projects])
+        .invoke_handler(tauri::generate_handler![get_current_theme_name, add_project, get_projects, remove_project])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
