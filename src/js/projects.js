@@ -21,10 +21,13 @@ function createCorruptedSign(name) {
         this.parentNode.style.backgroundColor = '';
     });
     let dialog = document.createElement('dialog');
+    dialog.className = "corrupted-sign-dialog";
     dialog.innerHTML = `
-        <p>The Made file "${name}" is corrupted and cannot be opened. File recovery is very unlikely. In this situation, it is recommended to delete it and recreate it. Deleting the Made file will not entail any changes in your modpack. Only data about collections of items and tags inside Made will be lost. Would you like to delete a corrupted file:</p>
-        <button id="cancel">Cancel</button>
-        <button id="delete">Delete</button>
+        <div class="corrupted-sign-dialog-container">
+        <p class="csd-txt">The Made file "${name}" is corrupted and cannot be opened. File recovery is very unlikely. In this situation, it is recommended to delete it and recreate it. Deleting the Made file will not entail any changes in your modpack. Only data about collections of items and tags inside Made will be lost. Would you like to delete a corrupted file:</p>
+        <button class="csd-btn csd-btn-cncl" id="cancel">Cancel</button>
+        <button class="csd-btn-dlt" id="delete">Delete</button>
+        </div>
     `;
     dialog.querySelector("#cancel").addEventListener('click', function() {
         dialog.close();

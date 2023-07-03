@@ -124,3 +124,41 @@ body {
     stroke: #930336;
     stroke-width: 2.5;
 }
+.corrupted-sign-dialog
+{
+    position: absolute;
+    top: 0;
+    bottom: 10%;
+    width: 46%;
+    background-color: var(--third-backcolor);
+    border-radius: calc(0.42vh + 0.42vw);
+    border-width: calc(0.3vh + 0.3vw);
+    border-color: var(--third-backcolor);
+}
+.corrupted-sign-dialog-container
+{
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    grid-template-columns: 3fr 2fr 1fr 2fr 3fr;
+    grid-template-areas:
+        "txt txt txt txt txt"
+        ".  btn-cncl .  btn-dlt . ";
+}
+.csd-txt
+{
+    grid-area: txt;
+    font-size: calc(1.1vh + 1.1vw);
+}
+.csd-btn
+{
+    
+    width: 100%;
+}
+.csd-btn-cncl
+{
+    grid-area: btn-cncl;
+}
+.csd-btn-dlt
+{
+    grid-area: btn-dlt;
+}
