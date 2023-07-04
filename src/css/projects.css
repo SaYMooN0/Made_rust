@@ -190,17 +190,67 @@ body {
 }
 
 .action-btns-container {
-    background-color: aqua;
     position: absolute;
     width: calc(20px + 20%);
-    height: 60%;
+    height: 40vh;
     right: 6%;
-    top: 22%;
+    top: 20%;
     display: grid;
     grid-template-rows: 1fr 3fr 3fr 3fr;
+    grid-gap: 1.5%;
 
 }
-
 .work-starting-text {
+    height: 100%;
     font-family: 'Figtree';
+    display: flex;
+    align-items: center;
+    color: var(--main-frontcolor);
+    font-size: calc(1.2vh + 1.2vw + 3px);
+    letter-spacing: 2px;
+    margin-top: 0;
+   
+}
+.action-btn{
+    height:12vh;
+    background-color: var(--second-backcolor);
+    border-radius: calc(0.2vh + 0.2vw);
+    display: grid;
+    display: grid;
+    grid-template-rows: 1.3fr 1fr 1fr;
+    grid-template-columns: 1fr 4.5fr;
+    grid-template-areas:
+        "icn hdr"
+        "icn inf"
+        "icn inf";
+    
+}
+.action-btn:hover{
+    cursor: pointer;
+    background-color: var(--main-brightcolor);
+}
+.action-name{
+    height: 100%;
+    grid-area: hdr;
+    display:flex;
+    align-items:end;
+    color: var(--second-frontcolor);
+    font-family: 'Bahnschrift';
+    font-size: calc(1.1vw + 0.8vh + 2px);
+}
+.action-info{
+    margin-top: 0;
+    grid-area: inf;
+    color: var(--main-frontcolor);
+    font-family: 'Bahnschrift';
+    font-size: calc(0.62vw + 0.52vh + 2px);
+}
+.action-icon
+{
+    align-self: center;
+    grid-area: icn;
+    width:  80%;
+    aspect-ratio: 1/1;
+    margin-left: 12%;
+
 }
