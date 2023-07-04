@@ -200,6 +200,7 @@ body {
     grid-gap: 1.5%;
 
 }
+
 .work-starting-text {
     height: 100%;
     font-family: 'Figtree';
@@ -209,48 +210,74 @@ body {
     font-size: calc(1.2vh + 1.2vw + 3px);
     letter-spacing: 2px;
     margin-top: 0;
-   
+
 }
-.action-btn{
-    height:12vh;
+
+.action-btn {
+    height: 12vh;
     background-color: var(--second-backcolor);
     border-radius: calc(0.2vh + 0.2vw);
     display: grid;
     display: grid;
-    grid-template-rows: 1.3fr 1fr 1fr;
-    grid-template-columns: 1fr 4.5fr;
+    grid-template-rows: 1.8fr 1fr 1fr;
+    grid-template-columns: 1fr 5fr;
     grid-template-areas:
         "icn hdr"
         "icn inf"
         "icn inf";
-    
+
 }
-.action-btn:hover{
+
+.action-btn:hover {
     cursor: pointer;
     background-color: var(--main-brightcolor);
 }
-.action-name{
+
+.action-name {
     height: 100%;
     grid-area: hdr;
-    display:flex;
-    align-items:end;
+    display: flex;
+    align-items: end;
     color: var(--second-frontcolor);
     font-family: 'Bahnschrift';
     font-size: calc(1.1vw + 0.8vh + 2px);
 }
-.action-info{
+
+.action-info {
     margin-top: 0;
     grid-area: inf;
     color: var(--main-frontcolor);
     font-family: 'Bahnschrift';
     font-size: calc(0.62vw + 0.52vh + 2px);
 }
-.action-icon
-{
+
+.action-icon {
     align-self: center;
     grid-area: icn;
-    width:  80%;
+    width: 80%;
     aspect-ratio: 1/1;
     margin-left: 12%;
 
+}
+
+.action-new path {
+    stroke: var(--second-brightcolor);
+}
+
+.action-open path {
+    fill: var(--second-brightcolor);
+}
+
+.action-without-path {
+    fill: var(--second-brightcolor);
+}
+
+.action-btn:hover .action-new path {
+    stroke: var(--third-brightcolor);
+}
+.action-btn:hover .action-open path {
+    fill: var(--third-brightcolor);
+}
+.action-btn:hover .action-without-path {
+    fill: var(--third-brightcolor);
 }
