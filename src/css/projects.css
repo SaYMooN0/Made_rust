@@ -103,13 +103,15 @@ body {
     grid-area: more;
     width: 90%;
     aspect-ratio: 1/1;
+    cursor: pointer;
 }
 .project-more-button path  {
     fill: var(--second-frontcolor);
 }
 .project-more-button:hover path
 {
-    fill: var(--main-brightcolor);
+    fill: var(--second-brightcolor);
+   
 }
 .corrupted-sign
 {
@@ -117,12 +119,14 @@ body {
     grid-area: vrsn;
     width: calc(6px + 45%);
     aspect-ratio: 1/1;
+    cursor: pointer;
 }
 
 .corrupted-sign:hover .corrupted-sign-line
 {
     stroke: #930336;
     stroke-width: 2.5;
+   
 }
 .corrupted-sign-dialog
 {
@@ -130,16 +134,16 @@ body {
     top: 0;
     bottom: 10%;
     width: 46%;
-    background-color: var(--third-backcolor);
-    border-radius: calc(0.42vh + 0.42vw);
+    background-color: var(--second-backcolor);
+    border-radius: calc(0.45vh + 0.45vw);
     border-width: calc(0.3vh + 0.3vw);
-    border-color: var(--third-backcolor);
+    border-color: var(--second-backcolor);
 }
 .corrupted-sign-dialog-container
 {
     display: grid;
-    grid-template-rows: 4fr 1fr;
-    grid-template-columns: 3fr 2fr 1fr 2fr 3fr;
+    grid-template-rows: 8fr 1fr;
+    grid-template-columns: 9fr 2.2fr 1fr 2.2fr 1fr;
     grid-template-areas:
         "txt txt txt txt txt"
         ".  btn-cncl .  btn-dlt . ";
@@ -148,11 +152,27 @@ body {
 {
     grid-area: txt;
     font-size: calc(1.1vh + 1.1vw);
+    color: var(--main-frontcolor);
+    font-family: 'Bahnschrift';
+    font-weight: 400;
 }
 .csd-btn
 {
-    
+    background-color: var(--main-brightcolor);
     width: 100%;
+    grid-area: btn-cncl;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Figtree';
+    font-size: calc(0.75vh + 0.52vw + 2px);
+    letter-spacing: 0.1vw;
+    color: var(--main-frontcolor);
+}
+.csd-btn:hover
+{
+    background-color: var(--third-brightcolor);
+    cursor: pointer;
 }
 .csd-btn-cncl
 {
@@ -160,5 +180,6 @@ body {
 }
 .csd-btn-dlt
 {
+    
     grid-area: btn-dlt;
 }
