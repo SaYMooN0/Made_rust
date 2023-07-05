@@ -15,7 +15,7 @@
     <div class="projects-container" id="projects-container"></div>
     <div class="action-btns-container">
         <p class="work-starting-text">Start Working</p>
-        <div class="action-btn">
+        <div class="action-btn" id="openCreateProjectDialogBtn">
             <div class="action-name">Create new project</div>
             <svg class="action-icon action-new" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -55,6 +55,24 @@
             <p class="action-info">Use Made functionality without modpack</p>
         </div>
     </div>
+    <dialog id="my-dialog" class="action-dialog">
+        <form id="my-form" method="dialog">
+            <p><label>First Input: <input type="text" name="first-input" required></label></p>
+            <p><label>Second Input: <input type="text" name="second-input" required></label><button type="button">Button</button></p>
+            <p>
+                <label>Select:
+                    <select name="my-select" required>
+                        <option value="">Select...</option>
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
+                </label>
+            </p>
+            <button id="dialogCancelBtn">Cancel</button>
+            <button type="submit">Submit</button>
+        </form>
+    </dialog>
 </body>
 
 </html>

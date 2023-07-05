@@ -281,3 +281,12 @@ body {
 .action-btn:hover .action-without-path {
     fill: var(--third-brightcolor);
 }
+.action-dialog {
+    width: 500px;
+    border: none;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.action-dialog ::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
