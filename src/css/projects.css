@@ -257,29 +257,15 @@ body {
     width: 80%;
     aspect-ratio: 1/1;
     margin-left: 12%;
+    
 
 }
 
-.action-new path {
+.action-icon path {
     stroke: var(--second-brightcolor);
 }
-
-.action-open path {
-    fill: var(--second-brightcolor);
-}
-
-.action-without-path {
-    fill: var(--second-brightcolor);
-}
-
-.action-btn:hover .action-new path {
+.action-btn:hover path {
     stroke: var(--third-brightcolor);
-}
-.action-btn:hover .action-open path {
-    fill: var(--third-brightcolor);
-}
-.action-btn:hover .action-without-path {
-    fill: var(--third-brightcolor);
 }
 .action-dialog {
     width: 500px;

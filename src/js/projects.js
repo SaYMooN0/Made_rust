@@ -105,12 +105,11 @@ async function setProjects() {
 
     }
 }
-function addEvents()
-{
-    document.getElementById("openCreateProjectDialogBtn").addEventListener("click",function() {document.getElementById('createNewProjectDialog').showModal();});
-    document.getElementById("dialogCancelBtn").addEventListener("click",function() {document.getElementById('createNewProjectDialog').close();});
+function addEvents() {
+    document.getElementById("openCreateProjectDialogBtn").addEventListener("click", function () { document.getElementById('createNewProjectDialog').showModal(); });
+    document.getElementById("dialogCancelBtn").addEventListener("click", function () { document.getElementById('createNewProjectDialog').close(); });
     let result;
-    document.getElementById("openFileExplorerBtn").addEventListener("click",async function() {document.getElementById("path-input").value = await open({multiple: false});;});
+    document.getElementById("openFileExplorerBtn").addEventListener("click", async function () { document.getElementById("path-input").value = await open({ multiple: false, directory: true, }); });
     console.log(result);
 }
 window.addEventListener("DOMContentLoaded", async () => {
