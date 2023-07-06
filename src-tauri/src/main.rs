@@ -6,9 +6,8 @@ mod made_settings;
 mod project;
 use project::Project;
 use std::fs::File;
-use std::io::{self, BufRead};
+use std::io::{self, BufRead, Read};
 use std::path::Path;
-
 
 lazy_static! {
     static ref SETTINGS: Mutex<made_settings::MadeSettings> = Mutex::new(made_settings::MadeSettings::new());
@@ -40,6 +39,47 @@ fn remove_project(name:String){
     let mut setting_for_made = SETTINGS.lock().unwrap();
     setting_for_made.remove_project(name);
 }
+#[tauri::command]
+fn get_name_and_version(directory_name: &str) -> String {
+
+    let full_path = directory_name.to_owned()+"\\minecraftinstance.json";
+    let path = Path::new(&full_path);
+    let mut file = match File::open(&path) {
+        Err(_) => return "-1".to_string(),
+        Ok(file) => file,
+    };
+    let name = match path.parent() {
+        Some(parent) => match parent.file_name() {
+            Some(name) => match name.to_str() {
+                Some(name) => name.to_string(),
+                None => return "-1".to_string(),
+            },
+            None => return "-1".to_string(),
+        },
+        None => return "-1".to_string(),
+    };
+    let mut contents = String::new();
+    if let Err(_) = file.read_to_string(&mut contents) {
+        return "-1".to_string();
+    };
+    let version_start = match contents.find("\"minecraftVersion\":\"") {
+        Some(start) => start,
+        None => return "-1".to_string(),
+    };
+    let version_end = match contents[version_start..].find(',') {
+        Some(end) => end,
+        None => return "-1".to_string(),
+    };
+    let version = &contents[version_start..version_start + version_end]
+        .split("\"minecraftVersion\":")
+        .collect::<Vec<&str>>()[1]
+        .trim()
+        .trim_matches(',')
+        .trim_matches('\"');
+
+    format!("{}|{}", version, name)
+}
+
 fn get_project_version(file_path: String) -> String {
     let path = Path::new(&file_path);
     match File::open(&path) {
@@ -68,7 +108,8 @@ fn get_project_version(file_path: String) -> String {
 }
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![get_current_theme_name, add_project, get_projects, remove_project])
+        .invoke_handler(tauri::generate_handler![get_current_theme_name, add_project, get_projects, remove_project,
+            get_name_and_version])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
