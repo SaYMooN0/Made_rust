@@ -45,23 +45,14 @@
     </div>
     <dialog id="createNewProjectDialog" class="action-dialog">
         <form id="my-form" method="dialog">
-            <p><label>First Input: <input type="text" id="name-input" name="first-input" required autocomplete="off"></label></p>
             <p>
-                <label>Second Input:
-                    <input type="text" id="path-input" name="path-input" required autocomplete="off">
+                <label>Project path:
+                    <input type="text" id="path-input" name="path" required autocomplete="off">
                 </label>
-                <button id="openFileExplorerBtn" type="button">Button</button>
+                <button id="openFileExplorerBtn" type="button">...</button>
             </p>
-            <p>
-                <label>Select:
-                    <select name="my-select" required>
-                        <option value="">Select...</option>
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
-                    </select>
-                </label>
-            </p>
+            <p><label>Name: <input type="text" id="name-input" name="name" required autocomplete="off"></label></p>
+            <p><label>Version: <input type="text" id="version-input" name="version" required autocomplete="off"></label></p>
             <button id="dialogCancelBtn">Cancel</button>
             <button type="submit">Submit</button>
         </form>
