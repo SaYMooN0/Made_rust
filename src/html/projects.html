@@ -55,10 +55,15 @@
             <p class="action-info">Use Made functionality without modpack</p>
         </div>
     </div>
-    <dialog id="my-dialog" class="action-dialog">
+    <dialog id="createNewProjectDialog" class="action-dialog">
         <form id="my-form" method="dialog">
-            <p><label>First Input: <input type="text" name="first-input" required></label></p>
-            <p><label>Second Input: <input type="text" name="second-input" required></label><button type="button">Button</button></p>
+            <p><label>First Input: <input type="text" name="first-input" required autocomplete="off"></label></p>
+            <p>
+                <label>Second Input:
+                     <input type="text" id="path-input" name="path-input" required autocomplete="off">
+                    </label>
+                <button id="openFileExplorerBtn" type="button">Button</button>
+            </p>
             <p>
                 <label>Select:
                     <select name="my-select" required>

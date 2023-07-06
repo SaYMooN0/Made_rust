@@ -1,4 +1,5 @@
 const { invoke } = window.__TAURI__.tauri;
+const { open } = window.__TAURI__.dialog;
 var projectsContainer = {};
 var pr = {};
 
@@ -106,8 +107,11 @@ async function setProjects() {
 }
 function addEvents()
 {
-    document.getElementById("openCreateProjectDialogBtn").addEventListener("click",function() {document.getElementById('my-dialog').showModal();});
-    document.getElementById("dialogCancelBtn").addEventListener("click",function() {document.getElementById('my-dialog').close();});
+    document.getElementById("openCreateProjectDialogBtn").addEventListener("click",function() {document.getElementById('createNewProjectDialog').showModal();});
+    document.getElementById("dialogCancelBtn").addEventListener("click",function() {document.getElementById('createNewProjectDialog').close();});
+    let result;
+    document.getElementById("openFileExplorerBtn").addEventListener("click",async function() {document.getElementById("path-input").value = await open({multiple: false});;});
+    console.log(result);
 }
 window.addEventListener("DOMContentLoaded", async () => {
     addEvents();
