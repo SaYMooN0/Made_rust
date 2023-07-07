@@ -1,14 +1,14 @@
 body {
     background-color: var(--main-backcolor);
 }
-.input-container
-{
+
+.input-container {
     margin-top: 8vh;
     margin-left: 5vw;
 }
-.new-project-header
-{
-    height:  10vh;
+
+.new-project-header {
+    height: 12vh;
     display: inline-block;
     color: var(--main-frontcolor);
     font-family: 'Figtree';
@@ -16,18 +16,23 @@ body {
     font-size: calc(1.8vh + 1.4vw + 6px);
     font-weight: 500;
 }
-.new-project-label
-{
+.new-line{
+    margin-top: -1.1vh;
+    align-items: center;
+    display: flex;
+    height: 3.2vh;
+}
+.new-project-label {
     display: inline-block;
     color: var(--main-frontcolor);
     font-family: 'Figtree';
-    letter-spacing: 2px;
-    font-size: calc(0.95vh + 0.65vw + 3px);
+    letter-spacing: 1px;
+    font-size: calc(0.9vh + 0.6vw + 3px);
     font-weight: 200;
     margin-top: 2vh;
 }
-.new-project-input
-{
+
+.new-project-input {
     height: calc(1.5vh + 7px);
     width: calc(38vw + 30px);
     background-color: var(--second-backcolor);
@@ -38,7 +43,80 @@ body {
     font-weight: 300;
     color: var(--main-frontcolor);
 }
+
 input:focus {
     outline: none;
     background-color: var(--third-backcolor);
-  }
+}
+
+.open-file-explorer-btn {
+    height: calc(1.7vh + 7px);
+    width: 2vw;
+    align-self: center;
+    background-color: var(--second-backcolor);
+    border: none;
+    margin-top: 0.7vh;
+    margin-left: 1vw;
+    color: var(--main-frontcolor);
+    font-size: calc(0.5vh + 0.7vw + 2px) ;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'Figtree';
+    padding-left: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.open-file-explorer-btn:hover
+{
+    background-color: var(--third-backcolor);
+    cursor: pointer;
+}
+.create-btn{
+    position: absolute;
+    bottom: 4.8vh;
+    right: 5vw;
+    height: 3.6vh;
+    width: 6.4vw;
+    background-color: var(--third-backcolor);
+    border: none;
+    font-family: 'Figtree';
+    font-size: calc(0.3vh + 0.7vw + 2px);
+    font-weight: 200;
+    color: var(--main-frontcolor);
+}
+.create-btn:hover
+{
+    background-color: var(--second-brightcolor);
+    cursor: pointer;
+}
+.cancel-btn
+{
+    position: absolute;
+    bottom: 4.8vh;
+    right: calc(6.4vw + 7vw);
+    height: 3.6vh;
+    width: 6.4vw;
+    background-color: var(--third-backcolor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Figtree';
+    font-size: calc(0.3vh + 0.7vw + 2px);
+    font-weight: 200;
+    color: var(--main-frontcolor);
+}
+.cancel-btn:hover
+{
+    background-color: var(--second-brightcolor);
+    cursor: pointer;
+}
+.warning
+{
+    font-family: 'Figtree';
+    color: var( --warning-color-main);
+    font-size: calc(0.4vh + 0.8vw + 3px);
+    font-weight: 200;
+    width: 60vw;
+    margin-top: -1vh;
+}

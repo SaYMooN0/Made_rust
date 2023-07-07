@@ -13,20 +13,17 @@
 <body>
     <form class="input-container" id="newProjectForm">
         <header class="new-project-header">Set up new project</header>
-        </br>
-        <label class="new-project-label">Project path: </label>
-        </br>
-        <input class="new-project-input" type="text" id="path-input" name="path" required autocomplete="off">
-        <button id="openFileExplorerBtn" type="button">...</button>
-        </br>
-        <label id="warning" class="new-project-warning"></label>
-        <label class="new-project-label">Name: </label>
-        </br>
-        <input class="new-project-input" type="text" id="name-input" name="name" required autocomplete="off">
-        </br>
-        <label class="new-project-label">Version: </label>
-        </br>
-        <input class="new-project-input" type="text" id="version-input" name="version" required autocomplete="off" />
+        <p class="new-line"><label class="new-project-label">Project path: </label></p>
+        <p class="new-line">
+            <input class="new-project-input" type="text" id="path-input" name="path" required autocomplete="off">
+            <button id="openFileExplorerBtn" class="open-file-explorer-btn" type="button">...</button>
+        </p>
+        <p id="warning" class="warning"></p>
+        <p class="new-line"> <label class="new-project-label">Name: </label> </p>
+        <p class="new-line"><input class="new-project-input" type="text" id="name-input" name="name" required autocomplete="off"> </p>
+        <p class="new-line"> <label class="new-project-label">Version: </label>  </p>
+        <p class="new-line"> <input class="new-project-input" type="text" id="version-input" name="version" required autocomplete="off" /></p>
+
         <button class="create-btn" type="submit">Create</button>
     </form>
 

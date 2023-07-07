@@ -8,9 +8,10 @@ function addEvents() {
         if (nameAndVersionObject != "-1") {
             document.getElementById("name-input").value = nameAndVersionObject.toString().split('|')[1];
             document.getElementById("version-input").value = nameAndVersionObject.toString().split('|')[0];
+            document.getElementById("warning").innerHTML="";
         }
         else {
-            document.getElementById("warning").innerHTML = "Warning</br>"
+            document.getElementById("warning").innerHTML = "!Warning! The folder with the modpack that you are trying to open is most likely created not with CurseForge. For better performance and to avoid errors in Made and the modpack itself, it is recommended to recreate your modpack using CurseForge</br>"
         }
     });
     const form = document.getElementById('newProjectForm');
