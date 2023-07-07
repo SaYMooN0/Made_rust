@@ -145,7 +145,9 @@ body {
     border-width: calc(0.3vh + 0.3vw);
     border-color: var(--second-backcolor);
 }
-
+dialog:focus {
+    outline: none;
+  }
 .corrupted-sign-dialog-container {
     display: grid;
     grid-template-rows: 8fr 1fr;
@@ -257,13 +259,12 @@ body {
     width: 80%;
     aspect-ratio: 1/1;
     margin-left: 12%;
-    
-
 }
 
 .action-icon path {
     stroke: var(--second-brightcolor);
 }
+
 .action-btn:hover path {
     stroke: var(--third-brightcolor);
 }

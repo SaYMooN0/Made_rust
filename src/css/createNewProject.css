@@ -1,0 +1,40 @@
+body {
+    background-color: var(--main-backcolor);
+}
+.input-container
+{
+    margin-top: 8vh;
+    margin-left: 5vw;
+}
+.new-project-header
+{
+    height:  8vh;
+    display: inline-block;
+    color: var(--main-frontcolor);
+    font-family: 'Figtree';
+    letter-spacing: 2px;
+    font-size: calc(1.8vh + 1.4vw + 6px);
+    font-weight: 500;
+}
+.new-project-label
+{
+    display: inline-block;
+    color: var(--main-frontcolor);
+    font-family: 'Figtree';
+    letter-spacing: 2px;
+    font-size: calc(0.9vh + 0.6vw + 3px);
+    font-weight: 200;
+    margin-top: 2vh;
+}
+.new-project-input
+{
+    height: 2vh;
+    width: 20vw;
+    background-color: var(--second-backcolor);
+    border: none;
+    margin-top: 0.7vh;
+}
+input:focus {
+    outline: none;
+    background-color: var(--third-backcolor);
+  }

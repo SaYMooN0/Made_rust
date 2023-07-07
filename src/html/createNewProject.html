@@ -11,19 +11,26 @@
 </head>
 
 <body>
-    <form id="my-form" method="dialog">
-        <p>
-            <label>Project path:
-                <input type="text" id="path-input" name="path" required autocomplete="off">
-            </label>
-            <button id="openFileExplorerBtn" type="button">...</button>
-        </p>
-        <p><label>Name: <input type="text" id="name-input" name="name" required autocomplete="off"></label></p>
-        <p><label>Version: <input type="text" id="version-input" name="version" required autocomplete="off"></label></p>
-        <button id="dialogCancelBtn">Cancel</button>
-        <button type="submit">Submit</button>
+    <form class="input-container">
+        <header class="new-project-header">Set up new project</header>
+        </br>
+        <label class="new-project-label">Project path: </label>
+        </br>
+        <input class="new-project-input" type="text" id="path-input" name="path" required autocomplete="off">
+        <button id="openFileExplorerBtn" type="button">...</button>
+        </br>
+        <label id="warning" class="new-project-warning"></label>
+        <label class="new-project-label">Name: </label>
+        </br>
+        <input class="new-project-input" type="text" id="name-input" name="name" required autocomplete="off">
+        </br>
+        <label class="new-project-label">Version: </label>
+        </br>
+        <input class="new-project-input" type="text" id="version-input" name="version" required autocomplete="off" />
+        <button class="create-btn" type="submit">Create</button>
     </form>
 
+    <a class="cancel-btn no-underline" href="projects.html">Cancel</a>
 </body>
 
 </html>

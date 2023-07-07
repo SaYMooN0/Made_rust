@@ -1,8 +1,6 @@
 const { invoke } = window.__TAURI__.tauri;
 const { open } = window.__TAURI__.dialog;
 function addEvents() {
-    document.getElementById("openCreateProjectDialogBtn").addEventListener("click", function () { document.getElementById('createNewProjectDialog').showModal(); });
-    document.getElementById("dialogCancelBtn").addEventListener("click", function () { document.getElementById('createNewProjectDialog').close(); });
     let result;
     document.getElementById("openFileExplorerBtn").addEventListener("click", async function () {
         let directory = await open({ multiple: false, directory: true, });
@@ -12,12 +10,16 @@ function addEvents() {
             document.getElementById("name-input").value = nameAndVersionObject.toString().split('|')[1];
             document.getElementById("version-input").value = nameAndVersionObject.toString().split('|')[0];
         }
-        else
-        {
-
+        else {
+            document.getElementById("warning").innerHTML = "Warning</br>"
         }
     });
     console.log(result);
+}
+async function setThemeOnStart() {
+    var linkElement = document.getElementById('theme-link');
+    let theme = await invoke("get_current_theme_name");
+    linkElement.href = '../themes_css/' + theme + ".css";
 }
 window.addEventListener("DOMContentLoaded", async () => {
     addEvents();
