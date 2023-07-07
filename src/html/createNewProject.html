@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../css/mainCss.css" />
+    <link rel="stylesheet" href="../themes_css/dark.css" id="theme-link" />
+    <link rel="stylesheet" href="../css/createNewProject.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="../js/createNewProject.js" defer></script>
+</head>
+
+<body>
+    <form id="my-form" method="dialog">
+        <p>
+            <label>Project path:
+                <input type="text" id="path-input" name="path" required autocomplete="off">
+            </label>
+            <button id="openFileExplorerBtn" type="button">...</button>
+        </p>
+        <p><label>Name: <input type="text" id="name-input" name="name" required autocomplete="off"></label></p>
+        <p><label>Version: <input type="text" id="version-input" name="version" required autocomplete="off"></label></p>
+        <button id="dialogCancelBtn">Cancel</button>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+
+</html>
