@@ -128,10 +128,13 @@ body {
     position: relative;
     right: -26%;
 }
-
+.corrupted-sign-line
+{
+    stroke:var(--warning-color-main);
+}
 .corrupted-sign:hover .corrupted-sign-line {
-    stroke: #930336;
-    stroke-width: 2.5;
+    stroke:var(--warning-color-bright);
+    stroke-width: 2.4;
 
 }
 

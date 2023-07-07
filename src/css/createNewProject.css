@@ -8,7 +8,7 @@ body {
 }
 .new-project-header
 {
-    height:  8vh;
+    height:  10vh;
     display: inline-block;
     color: var(--main-frontcolor);
     font-family: 'Figtree';
@@ -22,17 +22,21 @@ body {
     color: var(--main-frontcolor);
     font-family: 'Figtree';
     letter-spacing: 2px;
-    font-size: calc(0.9vh + 0.6vw + 3px);
+    font-size: calc(0.95vh + 0.65vw + 3px);
     font-weight: 200;
     margin-top: 2vh;
 }
 .new-project-input
 {
-    height: 2vh;
-    width: 20vw;
+    height: calc(1.5vh + 7px);
+    width: calc(38vw + 30px);
     background-color: var(--second-backcolor);
     border: none;
     margin-top: 0.7vh;
+    font-family: 'Figtree';
+    font-size: calc(0.3vh + 0.7vw + 2px);
+    font-weight: 300;
+    color: var(--main-frontcolor);
 }
 input:focus {
     outline: none;

@@ -1,7 +1,6 @@
 const { invoke } = window.__TAURI__.tauri;
 const { open } = window.__TAURI__.dialog;
 function addEvents() {
-    let result;
     document.getElementById("openFileExplorerBtn").addEventListener("click", async function () {
         let directory = await open({ multiple: false, directory: true, });
         document.getElementById("path-input").value = directory;
@@ -14,7 +13,14 @@ function addEvents() {
             document.getElementById("warning").innerHTML = "Warning</br>"
         }
     });
-    console.log(result);
+    const form = document.getElementById('newProjectForm');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let formData = new FormData(form);
+        for (var pair of formData.entries()) {
+          console.log(pair[0]+ ', ' + pair[1]); 
+        }
+      });
 }
 async function setThemeOnStart() {
     var linkElement = document.getElementById('theme-link');
