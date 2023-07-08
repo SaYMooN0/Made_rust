@@ -1,6 +1,7 @@
 use std::fs::File;
+use std::io::prelude::*;
+use std::io::BufWriter;
 use std::io::{BufRead, BufReader};
-
 pub struct Project {
     pub name: String,
     pub version: String,
@@ -51,5 +52,20 @@ impl Project {
             tags_collection,
         })
     }
-   
+    pub fn create_project_file(
+        name: &str,
+        path: &str,
+        version: &str,
+    ) -> Result<(), Box<dyn std::error::Error>> {
+        let file = File::create(path)?;
+        let mut writer = BufWriter::new(&file);
+        writer.write_all(b"!doctype:madefile\n")?;
+        writer.write_fmt(format_args!("name:{}\n", name))?;
+        writer.write_fmt(format_args!("version:{}\n", version))?;
+        writer.write_all(b"items_collection:\n{\n\n}\n")?;
+        writer.write_all(b"tags_collection:\n{\n\n}\n")?;
+        writer.flush()?;
+
+        Ok(())
+    }
 }

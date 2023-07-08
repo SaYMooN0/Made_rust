@@ -48,14 +48,14 @@ body {
     min-height: 60px;
     height: calc(20px + 12%);
     max-width: 100%;
-    width: 98%;
+    width: 99%;
     margin-top: 0.6%;
     background-color: var(--main-backcolor);
     display: grid;
     grid-template-rows: 7fr 3fr;
     grid-template-columns: 7fr 12fr 2fr 1fr;
     grid-template-areas:
-        "name .  vrsn more"
+        "name name vrsn more"
         "path path path path";
     border-radius: calc(0.1vw + 0.06vh + 2px);
     cursor: pointer;
@@ -67,7 +67,7 @@ body {
 
 .project-text-name {
     grid-area: name;
-    height: 80%;
+    height: 100%;
     color: var(--second-frontcolor);
     font-family: 'Bahnschrift';
     font-size: calc(1.64vh + 1.47vw);
@@ -75,7 +75,9 @@ body {
     align-items: center;
     justify-content: flex-start;
     font-weight: 700;
-    margin-top: -2.5%;
+    margin-top: -0.9%;
+    margin-left: 1%;
+    width: 90%;
 
 }
 
@@ -86,7 +88,9 @@ body {
     font-family: 'Figtree';
     font-size: calc(0.65vh + 0.55vw + 2px);
     text-align: left;
-    margin-top: -3%;
+    margin-top: -2%;
+    margin-left: 1%;
+    width: 90%;
 }
 
 .project-text-version {
@@ -94,20 +98,21 @@ body {
     height: 80%;
     color: var(--second-frontcolor);
     font-family: 'Bahnschrift';
-    margin-top: 17%;
-    font-size: calc(1vh + 1.1vw);
+    margin-top: 12%;
+    font-size: calc(1.05vh + 1.15vw);
     text-align: right;
     font-weight: 600;
     margin-right: 20%;
 }
 
 .project-more-button {
-    margin-left: 10%;
+    margin-left: 0%;
     margin-top: calc(12% + 0.15vw);
     grid-area: more;
-    width: 90%;
+    width: 80%;
     aspect-ratio: 1/1;
     cursor: pointer;
+    
 }
 
 .project-more-button path {

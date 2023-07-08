@@ -15,12 +15,15 @@ function addEvents() {
         }
     });
     const form = document.getElementById('newProjectForm');
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async function (e){
         e.preventDefault();
         let formData = new FormData(form);
-        for (var pair of formData.entries()) {
-          console.log(pair[0]+ ', ' + pair[1]); 
-        }
+        let pair= formData.entries();
+        let path=pair.next().value[1];
+        let name=pair.next().value[1];
+        let version=pair.next().value[1];
+        await invoke("add_project", { name: name, path: path,  version: version });
+        console.log("ppp");
       });
 }
 async function setThemeOnStart() {

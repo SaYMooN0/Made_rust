@@ -2,13 +2,11 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 use lazy_static::lazy_static;
 use std::sync::Mutex;
-mod made_settings;
-mod project;
-use project::Project;
 use std::fs::File;
 use std::io::{self, BufRead, Read};
 use std::path::Path;
-
+mod structs;
+use structs::made_settings;
 lazy_static! {
     static ref SETTINGS: Mutex<made_settings::MadeSettings> =
         Mutex::new(made_settings::MadeSettings::new());
@@ -31,14 +29,14 @@ fn get_current_theme_name() -> String {
     return setting_for_made.get_current_theme();
 }
 #[tauri::command]
-fn add_project(name: String, path: String) {
+fn add_project(name: String, path: String, version: String) {
     let mut setting_for_made = SETTINGS.lock().unwrap();
-    setting_for_made.add_project(name, path);
+    setting_for_made.add_project(name, path, version);
 }
 #[tauri::command]
 fn remove_project(name: String) {
     let mut setting_for_made = SETTINGS.lock().unwrap();
-    setting_for_made.remove_project(name);
+    setting_for_made.remove_project(name).unwrap();
 }
 #[tauri::command]
 fn get_name_and_version(directory_name: &str) -> String {
