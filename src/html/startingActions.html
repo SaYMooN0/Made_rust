@@ -5,9 +5,9 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/mainCss.css" />
     <link rel="stylesheet" href="../themes_css/dark.css" id="theme-link" />
-    <link rel="stylesheet" href="../css/projects.css" />
+    <link rel="stylesheet" href="../css/startingActions.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="../js/projects.js" defer></script>
+    <script type="module" src="../js/startingActions.js" defer></script>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
     <div class="projects-container" id="projects-container"></div>
     <div class="action-btns-container">
         <p class="work-starting-text">Start Working</p>
-        <a class="action-btn no-underline" id="openCreateProjectDialogBtn" href="createNewProject.html">
+        <a class="action-btn no-underline" href="createNewProject.html">
             <div class="action-name">Create new project</div>
             <svg class="action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -24,7 +24,7 @@
             </svg>
             <p class="action-info">Open already existing modpack folder and start using Made in it</p>
         </a>
-        <div class="action-btn">
+        <div class="action-btn" id="openExistingProjectBtn">
             <div class="action-name">Open project</div>
             <svg class="action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path

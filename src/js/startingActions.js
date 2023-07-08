@@ -1,7 +1,7 @@
 const { invoke } = window.__TAURI__.tauri;
+const { open } = window.__TAURI__.dialog;
 var projectsContainer = {};
 var pr = {};
-
 async function setThemeOnStart() {
     var linkElement = document.getElementById('theme-link');
     let theme = await invoke("get_current_theme_name");
@@ -10,6 +10,16 @@ async function setThemeOnStart() {
 function projectLinkClicked() {
     pr.textContent = "clicked";
     pr.textContent = this.textContent;
+}
+async function openExistingProjectChoosingDialog() {
+    const file = await open({
+        multiple: false,
+        filters: [{
+          name: 'project',
+          extensions: ['madeProject']
+        }]
+      });
+    console.log(file);
 }
 function createCorruptedSign(name) {
     let sign = document.createElement('div');
@@ -103,6 +113,7 @@ async function setProjects() {
     }
 }
 window.addEventListener("DOMContentLoaded", async () => {
+    document.getElementById('openExistingProjectBtn').addEventListener('click', openExistingProjectChoosingDialog);
     pr = document.getElementById('project-header');
     await setProjects();
     await setThemeOnStart();
