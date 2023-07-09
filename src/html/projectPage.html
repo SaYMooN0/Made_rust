@@ -8,11 +8,29 @@
     <link rel="stylesheet" href="../css/projectPage.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="../js/projectPage.js" defer></script>
+    <script src="../libs/jquery-1.12.4.js" ></script>
+    <script src="../libs/jquery-ui.js" ></script>
 </head>
 
 <body>
     <p>projectPage</p>
     <a href="startingActions.html">page</a>
+    <div id="tabs">
+        <ul id="sortable">
+          <li class="ui-state-default" data-tab="tab-1"><a href="#tab-1">Tab 1</a></li>
+          <li class="ui-state-default" data-tab="tab-2"><a href="#tab-2">Tab 2</a></li>
+          <li class="ui-state-default" data-tab="tab-3"><a href="#tab-3">Tab 3</a></li>
+        </ul>
+        <div id="tab-1">
+          <p>Tab 1 content.</p>
+        </div>
+        <div id="tab-2">
+          <p>Tab 2 content.</p>
+        </div>
+        <div id="tab-3">
+          <p>Tab 3 content.</p>
+        </div>
+      </div>
 </body>
 
 </html>
