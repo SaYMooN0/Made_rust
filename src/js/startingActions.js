@@ -7,21 +7,25 @@ async function setThemeOnStart() {
     let theme = await invoke("get_current_theme_name");
     linkElement.href = '../themes_css/' + theme + ".css";
 }
-function projectLinkClicked() {
-    pr.textContent = "clicked";
-    pr.textContent = this.textContent;
+async function projectLinkClicked(filePath) {
+    await invoke("set_current_project", { path: filePath });
+    location.href = "projectPage.html";
 }
 async function openExistingProjectChoosingDialog() {
     const file = await open({
         multiple: false,
         filters: [{
-          name: 'project',
-          extensions: ['madeProject']
+            name: 'project',
+            extensions: ['madeProject']
         }]
-      });
+    });
     console.log(file);
-    location.href="projectPage.html";
-    console.log(1);
+    if (file) {
+        await invoke("set_current_project", { path: file });
+        location.href = "projectPage.html";
+
+    }
+
 }
 function createCorruptedSign(name) {
     let sign = document.createElement('div');
@@ -46,7 +50,6 @@ function createCorruptedSign(name) {
         dialog.close();
     });
     dialog.querySelector("#delete").addEventListener('click', function () {
-
         let projectToDelete = document.getElementById("prj_item_" + name);
         projectToDelete.remove();
         dialog.close();
@@ -54,7 +57,8 @@ function createCorruptedSign(name) {
     });
 
     document.body.appendChild(dialog);
-    sign.addEventListener('click', function () {
+    sign.addEventListener('click', function (event) {
+        event.stopPropagation();
         dialog.showModal();
     });
 
@@ -66,7 +70,7 @@ function generateProjectLink(projectInfo) {
     projectItem = document.createElement('div');
     projectItem.className = "project-item";
     projectItem.id = "prj_item_" + projectInfo[0];
-    //projectItem.addEventListener('click', projectLinkClicked);
+    projectItem.addEventListener('click', () => projectLinkClicked(projectInfo[1]));
 
     projectTextName = document.createElement('p');
     projectTextName.className = "project-text-name";

@@ -23,7 +23,8 @@ function addEvents() {
         let name=pair.next().value[1];
         let version=pair.next().value[1];
         await invoke("add_project", { name: name, path: path,  version: version });
-        console.log("ppp");
+        await invoke("set_current_project", { path:path+"\\"+name+".madeProject" });
+        location.href = "projectPage.html";
       });
 }
 async function setThemeOnStart() {

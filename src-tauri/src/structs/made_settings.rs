@@ -74,19 +74,24 @@ impl MadeSettings {
     }
     pub fn add_project(&mut self, name: String, path: String, version: String) {
         let mut full_path: String = path.to_owned();
-        full_path += "/";
+        full_path += "\\";
         full_path += &name;
         full_path += ".madeProject";
-        self.projects.insert(name.clone(), path.clone());
-        let links_file_path = Path::new("links.madeSettings");
-        let mut file = OpenOptions::new()
-            .write(true)
-            .append(true)
-            .open(&links_file_path)
-            .expect("Failed to open file");
-        writeln!(file).expect("Failed to write new line to file");
-        writeln!(file, "{}={}", name, full_path).expect("Failed to write to file");
-        Project::create_project_file(&name, &full_path,&version).unwrap();
+        match Project::create_project_file(&name, &full_path,&version){
+            Ok(project) => {self.projects.insert(name.clone(), path.clone());
+                let links_file_path = Path::new("links.madeSettings");
+                let mut file = OpenOptions::new()
+                    .write(true)
+                    .append(true)
+                    .open(&links_file_path)
+                    .expect("Failed to open file");
+                writeln!(file).expect("Failed to write new line to file");
+                writeln!(file, "{}={}", name, full_path).expect("Failed to write to file");
+                },
+            Err(error) => {
+                eprintln!("Ошибка при создании проекта: {}", error);
+            }
+        }
     }
     pub fn remove_project(&mut self, key: String) -> std::io::Result<()> {
         self.projects.remove(&key);

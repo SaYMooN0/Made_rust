@@ -1,6 +1,7 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 use lazy_static::lazy_static;
+use structs::project::Project;
 use std::fs::File;
 use std::io::{self, BufRead, Read};
 use std::path::Path;
@@ -14,13 +15,20 @@ lazy_static! {
         Mutex::new(project::Project::default());
 }
 #[tauri::command]
-fn set_current_project(path:&str) {
-    
+fn set_current_project(path: String) {
     let mut current_project = CURRENT_PROJECT.lock().unwrap();
-    print!("{}",current_project.name);
-    *current_project = project::Project::new(&path).unwrap();
-    print!("{}",current_project.name)
+    match project::Project::new(&path) {
+        Ok(project) => *current_project = project,
+        Err(error) => {
+            *current_project=project::Project::default();
+        }
+    }
 }
+#[tauri::command]
+fn get_current_project()->Project {
+    return  CURRENT_PROJECT.lock().unwrap().clone();
+}
+
 #[tauri::command]
 fn get_projects() -> Vec<Vec<String>> {
     let setting_for_made = SETTINGS.lock().unwrap();
@@ -30,7 +38,6 @@ fn get_projects() -> Vec<Vec<String>> {
         .into_iter()
         .map(|(key, value)| vec![key, value.clone(), get_project_version(value.clone())])
         .collect();
-
     return projects_to_send;
 }
 #[tauri::command]
@@ -42,6 +49,7 @@ fn get_current_theme_name() -> String {
 fn add_project(name: String, path: String, version: String) {
     let mut setting_for_made = SETTINGS.lock().unwrap();
     setting_for_made.add_project(name, path, version);
+
 }
 #[tauri::command]
 fn remove_project(name: String) {
@@ -119,7 +127,9 @@ fn main() {
             add_project,
             get_projects,
             remove_project,
-            get_name_and_version
+            get_name_and_version,
+            get_current_project,
+            set_current_project,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

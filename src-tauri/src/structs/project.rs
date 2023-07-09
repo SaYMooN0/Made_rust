@@ -2,6 +2,10 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::io::BufWriter;
 use std::io::{BufRead, BufReader};
+
+use serde::{Serialize, Deserialize};
+
+#[derive(Serialize, Deserialize, Clone)]
 pub struct Project {
     pub name: String,
     pub version: String,
@@ -12,6 +16,7 @@ pub struct Project {
 
 impl Project {
     pub fn new(file_path: &str) -> Result<Self, Box<dyn std::error::Error>> {
+        
         let file = File::open(file_path)?;
         let reader = BufReader::new(file);
 
@@ -57,6 +62,7 @@ impl Project {
         path: &str,
         version: &str,
     ) -> Result<(), Box<dyn std::error::Error>> {
+
         let file = File::create(path)?;
         let mut writer = BufWriter::new(&file);
         writer.write_all(b"!doctype:madefile\n")?;
