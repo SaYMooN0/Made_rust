@@ -7,21 +7,30 @@ async function setThemeOnStart() {
     let theme = await invoke("get_current_theme_name");
     linkElement.href = '../themes_css/' + theme + ".css";
 }
-async function projectLinkClicked(filePath) {
-    await invoke("set_current_project", { path: filePath });
+async function projectLinkClicked(file) {
+    const pathArray = file.split('\\');
+    const lastPart = pathArray.pop();
+    const fileNameArray = lastPart.split('.');
+    const fileName = fileNameArray[0];
+    file = pathArray.join('\\');
+    await invoke("set_current_project", { path: file, name: fileName });
     location.href = "projectPage.html";
 }
 async function openExistingProjectChoosingDialog() {
-    const file = await open({
+    let file = await open({
         multiple: false,
         filters: [{
             name: 'project',
             extensions: ['madeProject']
         }]
     });
-    console.log(file);
     if (file) {
-        await invoke("set_current_project", { path: file });
+        const pathArray = file.split('\\');
+        const lastPart = pathArray.pop();
+        const fileNameArray = lastPart.split('.');
+        const fileName = fileNameArray[0];
+        file = pathArray.join('\\');
+        await invoke("set_current_project", { path: file, name: fileName });
         location.href = "projectPage.html";
 
     }

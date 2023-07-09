@@ -9,15 +9,19 @@ use serde::{Serialize, Deserialize};
 pub struct Project {
     pub name: String,
     pub version: String,
-    pub path: String,
+    pub directory: String,
+    pub full_path:String,
     pub items_collection: Vec<String>,
     pub tags_collection: Vec<String>,
 }
 
 impl Project {
-    pub fn new(file_path: &str) -> Result<Self, Box<dyn std::error::Error>> {
-        
-        let file = File::open(file_path)?;
+    pub fn new(path: &str, project_name:&str) -> Result<Self, Box<dyn std::error::Error>> {
+        let mut full_path: String=path.to_owned();
+        full_path += "\\";
+        full_path += &project_name;
+        full_path += ".madeProject";
+        let file = File::open(&full_path.clone())?;
         let reader = BufReader::new(file);
 
         let mut name = String::new();
@@ -52,7 +56,8 @@ impl Project {
         Ok(Self {
             name,
             version,
-            path: file_path.to_string(),
+            directory: path.to_string(),
+            full_path:full_path,
             items_collection,
             tags_collection,
         })
@@ -80,7 +85,8 @@ impl Default for Project {
         Self {
             name: String::from("-1"),
             version: String::from("0.1.0"),
-            path: String::from("/default/path"),
+            directory: String::from("/default/directory"),
+            full_path:String::from("/default/fullpath"),
             items_collection: Vec::new(),
             tags_collection: Vec::new(),
         }

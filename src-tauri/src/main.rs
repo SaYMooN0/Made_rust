@@ -15,9 +15,9 @@ lazy_static! {
         Mutex::new(project::Project::default());
 }
 #[tauri::command]
-fn set_current_project(path: String) {
+fn set_current_project(path: String, name: String) {
     let mut current_project = CURRENT_PROJECT.lock().unwrap();
-    match project::Project::new(&path) {
+    match project::Project::new(&path,&name) {
         Ok(project) => *current_project = project,
         Err(error) => {
             *current_project=project::Project::default();
