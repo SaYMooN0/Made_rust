@@ -1,15 +1,25 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 use lazy_static::lazy_static;
-use std::sync::Mutex;
 use std::fs::File;
 use std::io::{self, BufRead, Read};
 use std::path::Path;
+use std::sync::Mutex;
 mod structs;
-use structs::made_settings;
+use structs::{made_settings, project};
 lazy_static! {
     static ref SETTINGS: Mutex<made_settings::MadeSettings> =
         Mutex::new(made_settings::MadeSettings::new());
+    static ref CURRENT_PROJECT: Mutex<project::Project> =
+        Mutex::new(project::Project::default());
+}
+#[tauri::command]
+fn set_current_project(path:&str) {
+    
+    let mut current_project = CURRENT_PROJECT.lock().unwrap();
+    print!("{}",current_project.name);
+    *current_project = project::Project::new(&path).unwrap();
+    print!("{}",current_project.name)
 }
 #[tauri::command]
 fn get_projects() -> Vec<Vec<String>> {
@@ -68,7 +78,7 @@ fn get_name_and_version(directory_name: &str) -> String {
         Some(end) => end,
         None => return "-1".to_string(),
     };
-    let version:&str = &contents[version_start..version_start + version_end]
+    let version: &str = &contents[version_start..version_start + version_end]
         .split("\"minecraftVersion\":")
         .collect::<Vec<&str>>()[1]
         .trim()

@@ -69,3 +69,14 @@ impl Project {
         Ok(())
     }
 }
+impl Default for Project {
+    fn default() -> Self {
+        Self {
+            name: String::from("-1"),
+            version: String::from("0.1.0"),
+            path: String::from("/default/path"),
+            items_collection: Vec::new(),
+            tags_collection: Vec::new(),
+        }
+    }
+}

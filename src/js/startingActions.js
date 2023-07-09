@@ -20,6 +20,8 @@ async function openExistingProjectChoosingDialog() {
         }]
       });
     console.log(file);
+    location.href="projectPage.html";
+    console.log(1);
 }
 function createCorruptedSign(name) {
     let sign = document.createElement('div');
