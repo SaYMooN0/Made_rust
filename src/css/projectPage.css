@@ -31,29 +31,33 @@ body{
 }
 #mainContainer {
     width: 100%;
-    height: 99vh;
+    height: 100vh;
     display: flex;
 }
 
 .resizable {
     height: 100%;
     flex-grow: 1;
-    border: 1px solid black;
 }
 
-#div1 {
-    background-color: #FFC0CB;
-    min-width: 20%;
+#modificationsChoosingPart {
+    background-color:var(--main-backcolor);
+    min-width: 14%;
 }
 
-#div2 {
-    background-color: #ADD8E6;
-    min-width: 20%;
+#modificationsMakingPart {
+    background-color:var(--main-backcolor);
+    min-width: 60%;
 }
 
-.resizer {
+#divider {
     height: 100%;
-    width: 10px;
-    background-color: #000;
+    width: calc(5px + 0.25vw);
+    background-color: var(--second-backcolor);
     cursor: ew-resize;
+}
+#divider:hover
+{
+    background-color: var(--third-backcolor);
+    
 }

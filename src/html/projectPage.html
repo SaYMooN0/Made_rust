@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/mainCss.css" />
@@ -7,25 +8,28 @@
     <link rel="stylesheet" href="../css/projectPage.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="../js/projectPage.js" defer></script>
-    <script src="../libs/jquery-1.12.4.js" ></script>
-    <script src="../libs/jquery-ui.js" ></script>
+    <script src="../libs/jquery-1.12.4.js"></script>
+    <script src="../libs/jquery-ui.js"></script>
 </head>
 
 <body>
     <div id="mainContainer">
-        <div id="div1" class="resizable"></div>
-        <div id="divider" class="resizer"></div>
-        <div id="div2" class="resizable"></div>
+        <div id="modificationsChoosingPart" class="resizable"></div>
+        <div id="divider"></div>
+        <div id="modificationsMakingPart" class="resizable">
+            <div id="containerForPages">
+                <ul id="sortable" class="tabsContainer">
+                    <li data-tab="tab-1"><a href="#tab-1">Tab 1</a></li>
+                    <li data-tab="tab-2"><a href="#tab-2">Tab 2</a></li>
+                    <li data-tab="tab-3"><a href="#tab-3">Tab 3</a></li>
+                </ul>
+                <div id="tab-1">1</div>
+                <div id="tab-2">2</div>
+                <div id="tab-3">3</div>
+            </div>
+        </div>
     </div>
-    <!-- <div id="containerForPages">
-        <ul id="sortable" class="tabsContainer" >
-          <li data-tab="tab-1"><a href="#tab-1">Tab 1</a></li>
-          <li data-tab="tab-2"><a href="#tab-2">Tab 2</a></li>
-          <li data-tab="tab-3"><a href="#tab-3">Tab 3</a></li>
-        </ul>
-        <div id="tab-1">1</div>
-        <div id="tab-2">2</div>
-        <div id="tab-3">3</div>
-      </div> -->
+
 </body>
+
 </html>

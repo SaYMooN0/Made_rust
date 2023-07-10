@@ -1,7 +1,17 @@
 import tabM from './projectPageFiles/pages/tab.js';
 const { invoke } = window.__TAURI__.tauri;
 const { open } = window.__TAURI__.dialog;
-var project, leftDiv, rightDiv;
+var project, choosingDiv, makingDiv;
+function main() {
+    
+    // document.getElementById('tab-1').innerHTML += tabM;
+    let divider = document.getElementById('divider');
+    choosingDiv = document.getElementById('modificationsChoosingPart');
+    makingDiv = document.getElementById('modificationsMakingPart');
+    divider.addEventListener('mousedown', mouseDown);
+    choosingDiv.style.width = '20%';
+    makingDiv.style.width = '80%';
+}
 function addTab(tabName) {
     let newTab = $("<li></li>");
     let newLink = $("<a></a>").attr("href", "#" + tabName).text(tabName);
@@ -10,7 +20,6 @@ function addTab(tabName) {
     $("#containerForPages").tabs("refresh");
     $("#sortable").sortable("refresh");
 }
-
 $(function () {
     $("#containerForPages").tabs();
     $("#sortable").sortable({
@@ -18,29 +27,17 @@ $(function () {
     });
     $("#sortable").disableSelection();
 });
-
-function main() {
-    // document.getElementById('tab-1').innerHTML += tabM;
-    let divider = document.getElementById('divider');
-    leftDiv = document.getElementById('div1');
-    rightDiv = document.getElementById('div2');
-    divider.addEventListener('mousedown', mouseDown);
-}
 function mouseDown(e) {
     e.preventDefault();
-
     let containerWidth = document.getElementById('mainContainer').offsetWidth;
-
     window.addEventListener('mousemove', mouseMove);
     window.addEventListener('mouseup', mouseUp);
-
     function mouseMove(e) {
         let newWidth = (e.clientX / containerWidth) * 100;
-
-        // Максимальная и минимальная ширина div'ов
-        if (newWidth > 20 && newWidth < 60) {
-            leftDiv.style.width = newWidth + '%';
-            rightDiv.style.width = (100 - newWidth) + '%';
+        if (newWidth > 14 && newWidth < 40) {
+            choosingDiv.style.width = newWidth + '%';
+            makingDiv.style.width = (100 - newWidth) + '%';
+            console.log(choosingDiv);
         }
     }
 
