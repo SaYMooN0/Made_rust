@@ -27,26 +27,64 @@ body {
     height: calc(1vh + 25px);
 }
 
-.actionChoosingPart {
+.action-choosing-part {
     background-color: var(--second-backcolor);
     width: calc(9% + 80px);
     height: 100%;
     position: absolute;
     left: 0;
+    padding-top: 6vh;
 }
 
-.modificationPart {
+.modification-part {
     position: absolute;
     top:0;
     right: 0;
     background-color: var(--main-backcolor);
     width: calc(91% - 80px);
     height: 100vh;
-    /* border-left-color: var(--main-backcolor); */
-    border-color: blanchedalmond;
-    border-width: calc(1vw + 4px);
 }
 
 .tabPage {
     height: calc(98vh - 25px - 10px); 
+}
+.new-modification-btn
+{
+    width: 100%;
+    height: calc(36px + 3vh);
+    max-height: calc(36px + 3vh);
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin-top: 1vh;
+}
+.action-icon-recipe
+{
+    width: 90%;
+    aspect-ratio: 1/1;
+    margin-top: 21%;
+    margin-left: 2%;
+}
+.action-icon-recipe path
+{
+    fill: var(--second-frontcolor);
+    
+}
+.action-icon-tags
+{
+    width: 100%;
+    margin-left: 0;
+    margin-top: 18%;
+    stroke: var(--second-frontcolor);
+}
+.action-icon-tags path
+{
+    stroke: var(--second-frontcolor);
+}
+.action-label
+{
+    font-family: 'Bahnschrift';
+    font-size: calc(1.1vh + 0.9vw + 2px); 
+    margin-top: 9%;
+    font-weight: 400;
+    color:  var(--second-frontcolor);;
 }
