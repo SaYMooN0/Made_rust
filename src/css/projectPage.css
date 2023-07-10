@@ -1,63 +1,52 @@
-body{
+body {
     background-color: var(--main-backcolor);
     margin: 0;
-    
-}
-#sortable { 
-    list-style-type: none; 
-    padding: 0; 
-    white-space: nowrap;
-    font-size: 0; 
 }
 
-#sortable li { 
+#sortable {
+    list-style-type: none;
+    padding: 0;
+    white-space: nowrap;
+    font-size: 0;
+}
+
+#sortable li {
     padding: calc(0.06vh + 0.06vw + 3px);
-    display: inline-block; 
+    display: inline-block;
     background-color: aliceblue;
-    font-size: calc(0.5vh + 0.7vw + 4px); 
-    
+    font-size: calc(0.5vh + 0.7vw + 4px);
 }
-#containerForPages
-{
-    background-color: aqua;
-}
+
 #sortable li a {
     text-decoration: none;
 }
 
-.tabsContainer{
+.tabsContainer {
+    margin-top: calc(10px + 1vh);
     background-color: var(--second-backcolor);
-   
+    height: calc(1vh + 25px);
 }
-#mainContainer {
-    width: 100%;
+
+.actionChoosingPart {
+    background-color: var(--second-backcolor);
+    width: calc(9% + 80px);
+    height: 100%;
+    position: absolute;
+    left: 0;
+}
+
+.modificationPart {
+    position: absolute;
+    top:0;
+    right: 0;
+    background-color: var(--main-backcolor);
+    width: calc(91% - 80px);
     height: 100vh;
-    display: flex;
+    /* border-left-color: var(--main-backcolor); */
+    border-color: blanchedalmond;
+    border-width: calc(1vw + 4px);
 }
 
-.resizable {
-    height: 100%;
-    flex-grow: 1;
-}
-
-#modificationsChoosingPart {
-    background-color:var(--main-backcolor);
-    min-width: 14%;
-}
-
-#modificationsMakingPart {
-    background-color:var(--main-backcolor);
-    min-width: 60%;
-}
-
-#divider {
-    height: 100%;
-    width: calc(5px + 0.25vw);
-    background-color: var(--second-backcolor);
-    cursor: ew-resize;
-}
-#divider:hover
-{
-    background-color: var(--third-backcolor);
-    
+.tabPage {
+    height: calc(98vh - 25px - 10px); 
 }
