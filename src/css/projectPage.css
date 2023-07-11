@@ -51,18 +51,17 @@ body {
 .new-modification-btn
 {
     width: 100%;
-    height: calc(36px + 3vh);
+    height: calc(34px + 2.4vh);
     max-height: calc(36px + 3vh);
     display: grid;
     grid-template-columns: 1fr 4fr;
-    margin-top: 1vh;
 }
 .action-icon-recipe
 {
-    width: 90%;
+    height: calc(6px + 40%);
     aspect-ratio: 1/1;
-    margin-top: 21%;
-    margin-left: 2%;
+    margin-top:calc(12% + 5px) ;
+    margin-left: 4%;
 }
 .action-icon-recipe path
 {
@@ -71,20 +70,35 @@ body {
 }
 .action-icon-tags
 {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 18%;
+    height: calc(6px + 56%);
+    aspect-ratio: 1/1;
+    margin-top:calc(4% + 1px) ;
     stroke: var(--second-frontcolor);
 }
 .action-icon-tags path
 {
     stroke: var(--second-frontcolor);
 }
+.action-icon-item
+{
+    height: calc(6px + 33%);
+    aspect-ratio: 1/1;
+    margin-top:calc(17% + 6px) ;
+    margin-left: 0.4vw;
+}
+.action-icon-item path
+{
+    fill: var(--second-frontcolor);
+}
+.action-icon-item-plus
+{
+    stroke: var(--second-frontcolor);
+}
 .action-label
 {
     font-family: 'Bahnschrift';
-    font-size: calc(1.1vh + 0.9vw + 2px); 
-    margin-top: 9%;
+    font-size: calc(1vh + 0.9vw + 2px); 
+    margin-top: calc(22px - 4%) ;
     font-weight: 400;
     color:  var(--second-frontcolor);;
 }
