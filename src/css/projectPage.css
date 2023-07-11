@@ -4,101 +4,137 @@ body {
 }
 
 #sortable {
-    list-style-type: none;
     padding: 0;
-    white-space: nowrap;
     font-size: 0;
+    list-style-type: none;
+    white-space: nowrap;
+
 }
 
-#sortable li {
-    padding: calc(0.06vh + 0.06vw + 3px);
-    display: inline-block;
-    background-color: aliceblue;
-    font-size: calc(0.5vh + 0.7vw + 4px);
+.tab-item {
+    padding-right: calc(0.4vw + 2px);
+    padding-left: calc(0.4vw + 2px);
+    font-size: calc(0.3vh + 0.5vw + 4px);
+    font-weight: 400;
+    background-color: var(--second-backcolor);
+    border: calc(0.04vw + 1px) solid var(--third-backcolor);
+    float: left;
+    height: 90%;
+    display: flex;
+    cursor: pointer;
 }
 
-#sortable li a {
+.tab-item:hover {
+    background-color: var(--third-backcolor);
+}
+
+#sortable a {
     text-decoration: none;
+    align-self: center;
+    color: var(--main-frontcolor);
+    font-family: 'Bahnschrift';
+
 }
 
 .tabsContainer {
-    margin-top: calc(10px + 1vh);
+    margin-top: calc(10px + 1.4vh);
     background-color: var(--second-backcolor);
-    height: calc(1vh + 25px);
+    height: calc(0.8vh + 25px);
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+}
+
+.tabsContainer li:active {
+    cursor: grabbing;
+    /* Курсор будет указывать, что элемент перетаскивается */
 }
 
 .action-choosing-part {
     background-color: var(--second-backcolor);
+    padding-top: calc(10px + 1.4vh);
     width: calc(9% + 80px);
-    height: 100%;
+    height: calc(98.6vh - 10px);
     position: absolute;
     left: 0;
-    padding-top: 6vh;
+
 }
 
 .modification-part {
     position: absolute;
-    top:0;
+    top: 0;
     right: 0;
     background-color: var(--main-backcolor);
     width: calc(91% - 80px);
     height: 100vh;
+
+
 }
 
 .tabPage {
-    height: calc(98vh - 25px - 10px); 
+    height: calc(97.4vh - 25px - 10px);
+    clear: both;
 }
-.new-modification-btn
-{
+
+.new-modification-btn {
     width: 100%;
     height: calc(34px + 2.4vh);
     max-height: calc(36px + 3vh);
     display: grid;
     grid-template-columns: 1fr 4fr;
+    cursor: pointer;
+    border: red 1px solid;
 }
-.action-icon-recipe
-{
+
+.new-modification-btn:hover {
+    border-left: var(--second-frontcolor) calc(0.12vw + 2px) solid;
+
+}
+
+.action-icon-recipe {
     height: calc(6px + 40%);
     aspect-ratio: 1/1;
-    margin-top:calc(12% + 5px) ;
+    margin-top: calc(11% + 6px);
     margin-left: 4%;
 }
-.action-icon-recipe path
-{
+
+.action-icon-recipe path {
     fill: var(--second-frontcolor);
-    
+
 }
-.action-icon-tags
-{
+
+.action-icon-tags {
     height: calc(6px + 56%);
     aspect-ratio: 1/1;
-    margin-top:calc(4% + 1px) ;
+    margin-top: calc(8px - 7%);
     stroke: var(--second-frontcolor);
 }
-.action-icon-tags path
-{
+
+.action-icon-tags path {
     stroke: var(--second-frontcolor);
 }
-.action-icon-item
-{
+
+.action-icon-item {
     height: calc(6px + 33%);
     aspect-ratio: 1/1;
-    margin-top:calc(17% + 6px) ;
-    margin-left: 0.4vw;
+    margin-top: calc(6% + 11px);
+    margin-left: calc(2px + 0.4vw);
 }
-.action-icon-item path
-{
+
+.action-icon-item path {
     fill: var(--second-frontcolor);
 }
-.action-icon-item-plus
-{
+
+.action-icon-item-plus {
     stroke: var(--second-frontcolor);
 }
-.action-label
-{
+
+.action-label {
     font-family: 'Bahnschrift';
-    font-size: calc(1vh + 0.9vw + 2px); 
-    margin-top: calc(22px - 4%) ;
+    font-size: calc(0.8vh + 1vw + 2px);
+    margin-top: calc(17px - 2.2%);
     font-weight: 400;
-    color:  var(--second-frontcolor);;
+    color: var(--second-frontcolor);
+    margin-left: calc(6px - 0.1vw);
+
 }
