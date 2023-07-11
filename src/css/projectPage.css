@@ -53,7 +53,7 @@ body {
 .action-choosing-part {
     background-color: var(--second-backcolor);
     padding-top: calc(10px + 1.4vh);
-    width: calc(9% + 80px);
+    width: calc(9.5vw + 80px);
     height: calc(98.6vh - 10px);
     position: absolute;
     left: 0;
@@ -65,7 +65,7 @@ body {
     top: 0;
     right: 0;
     background-color: var(--main-backcolor);
-    width: calc(91% - 80px);
+    width: calc(90.5vw - 80px);
     height: 100vh;
 
 
@@ -77,13 +77,15 @@ body {
 }
 
 .new-modification-btn {
+    margin-top: calc(0.1vw + 2px);
     width: 100%;
     height: calc(34px + 2.4vh);
     max-height: calc(36px + 3vh);
     display: grid;
     grid-template-columns: 1fr 4fr;
     cursor: pointer;
-    border: red 1px solid;
+    /* border: red 1px solid; */
+
 }
 
 .new-modification-btn:hover {
@@ -129,12 +131,72 @@ body {
     stroke: var(--second-frontcolor);
 }
 
+.action-icon-textmode {
+    height: calc(6px + 37%);
+    aspect-ratio: 1/1;
+    margin-top: calc(8% + 9px);
+    margin-left: calc(2px + 0.4vw);
+}
+
+.action-icon-textmode path {
+    stroke: var(--second-frontcolor);
+}
+
+.action-icon-multiblock {
+    height: calc(6px + 42%);
+    aspect-ratio: 1/1;
+    margin-top: calc(1% + 8px);
+    margin-left: calc(1px + 0.26vw);
+}
+
+.action-icon-multiblock path {
+    fill: var(--second-frontcolor);
+    stroke: var(--second-frontcolor);
+    stroke-width: 12;
+}
+
+.action-icon-block {
+    height: calc(6px + 48%);
+    aspect-ratio: 1/1;
+    margin-top: calc(1% + 7px);
+    margin-left: calc(1px + 0.1vw);
+}
+
+.action-icon-block path {
+    stroke: var(--second-frontcolor);
+    stroke-width: 1.6;
+}
+
+.action-icon-machine {
+    height: calc(6px + 38%);
+    aspect-ratio: 1/1;
+    margin-top: calc(10px - 1%);
+    margin-left: calc(1px + 0.3vw);
+}
+
+.action-icon-machine rect {
+    stroke: var(--second-frontcolor);
+    stroke-width: 3.4;
+}
+
+.action-icon-machine line {
+    stroke: var(--second-frontcolor);
+    stroke-width: 3.4;
+}
+
 .action-label {
     font-family: 'Bahnschrift';
     font-size: calc(0.8vh + 1vw + 2px);
     margin-top: calc(17px - 2.2%);
     font-weight: 400;
     color: var(--second-frontcolor);
-    margin-left: calc(6px - 0.1vw);
+    margin-left: calc(6px - 0.15vw);
+}
 
+.action-machinery-label {
+    font-family: 'Bahnschrift';
+    font-size: calc(0.9vh + 0.8vw + 2px);
+    margin-top: calc(35px - 18%);
+    font-weight: 400;
+    color: var(--second-frontcolor);
 }
