@@ -4,10 +4,14 @@ function addEvents() {
     document.getElementById("openFileExplorerBtn").addEventListener("click", async function () {
         let directory = await open({ multiple: false, directory: true, });
         document.getElementById("path-input").value = directory;
-        let nameAndVersionObject = await invoke("get_name_and_version", { directoryName: directory });
-        if (nameAndVersionObject != "-1") {
-            document.getElementById("name-input").value = nameAndVersionObject.toString().split('|')[1];
-            document.getElementById("version-input").value = nameAndVersionObject.toString().split('|')[0];
+        let creationInfo = await invoke("get_creation_info", { directoryName: directory });
+        if (creationInfo != "-1") {
+            document.getElementById("name-input").value = creationInfo.toString().split('|')[1];
+            document.getElementById("version-input").value = creationInfo.toString().split('|')[0];
+            let loader=creationInfo.toString().split('|')[2];
+            console.log(loader);
+            console.log(loader.charAt(0).toUpperCase() + loader.slice(1));
+            document.getElementById("loader-input").value = loader;
             document.getElementById("warning").innerHTML="";
         }
         else {
@@ -22,7 +26,9 @@ function addEvents() {
         let path=pair.next().value[1];
         let name=pair.next().value[1];
         let version=pair.next().value[1];
-        await invoke("add_project", { name: name, path: path,  version: version });
+        let loader=pair.next().value[1];
+        console.log(loader);
+        await invoke("add_project", { name: name, path: path,  version: version, loader:loader });
         await invoke("set_current_project", { path:path, name:name });
         location.href = "projectPage.html";
       });

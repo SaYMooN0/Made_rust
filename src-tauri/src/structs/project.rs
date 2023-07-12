@@ -3,21 +3,22 @@ use std::io::prelude::*;
 use std::io::BufWriter;
 use std::io::{BufRead, BufReader};
 
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Clone)]
 pub struct Project {
     pub name: String,
     pub version: String,
+    pub loader: String,
     pub directory: String,
-    pub full_path:String,
+    pub full_path: String,
     pub items_collection: Vec<String>,
     pub tags_collection: Vec<String>,
 }
 
 impl Project {
-    pub fn new(path: &str, project_name:&str) -> Result<Self, Box<dyn std::error::Error>> {
-        let mut full_path: String=path.to_owned();
+    pub fn new(path: &str, project_name: &str) -> Result<Self, Box<dyn std::error::Error>> {
+        let mut full_path: String = path.to_owned();
         full_path += "\\";
         full_path += &project_name;
         full_path += ".madeProject";
@@ -26,6 +27,7 @@ impl Project {
 
         let mut name = String::new();
         let mut version = String::new();
+        let mut loader = String::new();
         let mut items_collection = Vec::new();
         let mut tags_collection = Vec::new();
         let mut parsing_items = false;
@@ -37,6 +39,8 @@ impl Project {
                 name = line.split(':').nth(1).unwrap().trim().to_string();
             } else if line.starts_with("version:") {
                 version = line.split(':').nth(1).unwrap().trim().to_string();
+            } else if line.starts_with("loader:") {
+                loader = line.split(':').nth(1).unwrap().trim().to_string();
             } else if line.starts_with("items_collection:") {
                 parsing_items = true;
             } else if line.starts_with("tags_collection:") {
@@ -56,8 +60,9 @@ impl Project {
         Ok(Self {
             name,
             version,
+            loader,
             directory: path.to_string(),
-            full_path:full_path,
+            full_path: full_path,
             items_collection,
             tags_collection,
         })
@@ -67,7 +72,6 @@ impl Project {
         path: &str,
         version: &str,
     ) -> Result<(), Box<dyn std::error::Error>> {
-
         let file = File::create(path)?;
         let mut writer = BufWriter::new(&file);
         writer.write_all(b"!doctype:madefile\n")?;
@@ -85,8 +89,9 @@ impl Default for Project {
         Self {
             name: String::from("-1"),
             version: String::from("0.1.0"),
+            loader:String::from("default_loader"),
             directory: String::from("/default/directory"),
-            full_path:String::from("/default/fullpath"),
+            full_path: String::from("/default/fullpath"),
             items_collection: Vec::new(),
             tags_collection: Vec::new(),
         }

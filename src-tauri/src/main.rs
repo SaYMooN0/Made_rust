@@ -46,7 +46,7 @@ fn get_current_theme_name() -> String {
     return setting_for_made.get_current_theme();
 }
 #[tauri::command]
-fn add_project(name: String, path: String, version: String) {
+fn add_project(name: String, path: String, version: String, loader:String) {
     let mut setting_for_made = SETTINGS.lock().unwrap();
     setting_for_made.add_project(name, path, version);
 
@@ -57,7 +57,7 @@ fn remove_project(name: String) {
     setting_for_made.remove_project(name).unwrap();
 }
 #[tauri::command]
-fn get_name_and_version(directory_name: &str) -> String {
+fn get_creation_info(directory_name: &str) -> String {
     let full_path = directory_name.to_owned() + "\\minecraftinstance.json";
     let path = Path::new(&full_path);
     let mut file = match File::open(&path) {
@@ -78,7 +78,7 @@ fn get_name_and_version(directory_name: &str) -> String {
     if let Err(_) = file.read_to_string(&mut contents) {
         return "-1".to_string();
     };
-    let version_start = match contents.find("\"minecraftVersion\":\"") {
+    let version_start = match contents.find("\"minecraftVersion\":") {
         Some(start) => start,
         None => return "-1".to_string(),
     };
@@ -86,16 +86,36 @@ fn get_name_and_version(directory_name: &str) -> String {
         Some(end) => end,
         None => return "-1".to_string(),
     };
-    let version: &str = &contents[version_start..version_start + version_end]
+    let version = &contents[version_start..version_start + version_end]
         .split("\"minecraftVersion\":")
         .collect::<Vec<&str>>()[1]
         .trim()
         .trim_matches(',')
         .trim_matches('\"');
-    let clean_version = &version.replace("\"}", "");
-    format!("{}|{}", clean_version, name)
+    let mut clean_version:String =  version.to_string();
+    clean_version.retain(|c| c.is_digit(10) || c == '.');
+    // Find the loader
+    let loader_section_start = match contents.find("\"baseModLoader\":") {
+        Some(start) => start,
+        None => return "-1".to_string(),
+    };
+    let loader_name_start = match contents[loader_section_start..].find("\"name\":") {
+        Some(start) => start + loader_section_start,
+        None => return "-1".to_string(),
+    };
+    let loader_name_end = match contents[loader_name_start..].find("\",") {
+        Some(end) => end + loader_name_start,
+        None => return "-1".to_string(),
+    };
+    let loader_name: &str = &contents[loader_name_start..loader_name_end]
+        .split("\"name\":")
+        .collect::<Vec<&str>>()[1]
+        .trim()
+        .trim_matches('\"');
+    let clean_loader = &loader_name.split('-').next().unwrap_or("-1").to_string();
+    println!("{}",clean_loader);
+    format!("{}|{}|{}", clean_version, name, clean_loader)
 }
-
 fn get_project_version(file_path: String) -> String {
     let path = Path::new(&file_path);
     match File::open(&path) {
@@ -127,7 +147,7 @@ fn main() {
             add_project,
             get_projects,
             remove_project,
-            get_name_and_version,
+            get_creation_info,
             get_current_project,
             set_current_project,
         ])

@@ -28,5 +28,9 @@ async function setThemeOnStart() {
 window.addEventListener("DOMContentLoaded", async () => {
     await setThemeOnStart();
     project = await invoke("get_current_project");
+    if(project &&  ["1.18.2"].includes(project.version))
+    {
+        console.log(project.version);
+    }
     main();
 });

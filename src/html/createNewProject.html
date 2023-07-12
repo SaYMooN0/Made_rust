@@ -20,10 +20,16 @@
         </p>
         <p id="warning" class="warning"></p>
         <p class="new-line"> <label class="new-project-label">Name: </label> </p>
-        <p class="new-line"><input class="new-project-input" type="text" id="name-input" name="name" required autocomplete="off"> </p>
-        <p class="new-line"> <label class="new-project-label">Version: </label>  </p>
-        <p class="new-line"> <input class="new-project-input" type="text" id="version-input" name="version" required autocomplete="off" /></p>
-
+        <p class="new-line"><input class="new-project-input" type="text" id="name-input" name="name" required
+                autocomplete="off"> </p>
+        <p class="new-line"> <label class="new-project-label">Version: </label> </p>
+        <p class="new-line"> <input class="new-project-input" type="text" id="version-input" name="version" required
+                autocomplete="off" /></p>
+        <p class="new-line"> <label class="new-project-label">Modloader: </label> </p>
+        <p class="new-line"> <select name="loader" autocomplete="off" required id="loader-input">
+                <option value="forge" selected>Forge</option>
+                <option value="fabric">Fabric</option>
+            </select> </p>
         <button class="create-btn" type="submit">Create</button>
     </form>
 
