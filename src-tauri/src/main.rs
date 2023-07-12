@@ -48,7 +48,7 @@ fn get_current_theme_name() -> String {
 #[tauri::command]
 fn add_project(name: String, path: String, version: String, loader:String) {
     let mut setting_for_made = SETTINGS.lock().unwrap();
-    setting_for_made.add_project(name, path, version);
+    setting_for_made.add_project(name, path, version, loader);
 
 }
 #[tauri::command]
@@ -113,7 +113,6 @@ fn get_creation_info(directory_name: &str) -> String {
         .trim()
         .trim_matches('\"');
     let clean_loader = &loader_name.split('-').next().unwrap_or("-1").to_string();
-    println!("{}",clean_loader);
     format!("{}|{}|{}", clean_version, name, clean_loader)
 }
 fn get_project_version(file_path: String) -> String {

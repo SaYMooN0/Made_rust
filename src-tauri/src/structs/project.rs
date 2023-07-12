@@ -71,12 +71,14 @@ impl Project {
         name: &str,
         path: &str,
         version: &str,
+        loader: &str,
     ) -> Result<(), Box<dyn std::error::Error>> {
         let file = File::create(path)?;
         let mut writer = BufWriter::new(&file);
         writer.write_all(b"!doctype:madefile\n")?;
         writer.write_fmt(format_args!("name:{}\n", name))?;
         writer.write_fmt(format_args!("version:{}\n", version))?;
+        writer.write_fmt(format_args!("loader:{}\n", loader))?;
         writer.write_all(b"items_collection:\n{\n\n}\n")?;
         writer.write_all(b"tags_collection:\n{\n\n}\n")?;
         writer.flush()?;

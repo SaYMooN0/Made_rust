@@ -72,12 +72,12 @@ impl MadeSettings {
     pub fn get_projects_dictionary(&self) -> HashMap<String, String> {
         self.projects.clone()
     }
-    pub fn add_project(&mut self, name: String, path: String, version: String) {
+    pub fn add_project(&mut self, name: String, path: String, version: String, loader: String) {
         let mut full_path: String = path.to_owned();
         full_path += "\\";
         full_path += &name;
         full_path += ".madeProject";
-        match Project::create_project_file(&name, &full_path,&version){
+        match Project::create_project_file(&name, &full_path,&version, &loader){
             Ok(project) => {self.projects.insert(name.clone(), path.clone());
                 let links_file_path = Path::new("links.madeSettings");
                 let mut file = OpenOptions::new()
