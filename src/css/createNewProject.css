@@ -120,3 +120,14 @@ input:focus {
     width: 60vw;
     margin-top: -1vh;
 }
+.loader-select{
+    margin-top: calc(1.1vh + 6px);
+    width: calc(15px + 7vw);
+    background-color: var(--second-backcolor);
+    outline: none;
+    border: none;
+    color: var(--main-frontcolor);
+    height:  calc(20px + 1vh);
+    font-size: calc(0.45vh + 0.5vw + 5px);
+    font-family: 'Figtree';
+}
