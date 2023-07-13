@@ -122,7 +122,7 @@ input:focus {
 }
 .loader-select{
     margin-top: calc(1.1vh + 6px);
-    width: calc(15px + 7vw);
+    width: calc(40px + 7.3vw);
     background-color: var(--second-backcolor);
     outline: none;
     border: none;
