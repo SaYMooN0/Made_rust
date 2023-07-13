@@ -171,6 +171,7 @@ dialog:focus {
     color: var(--main-frontcolor);
     font-family: 'Bahnschrift';
     font-weight: 400;
+    text-align: justify;
 }
 
 .csd-btn {

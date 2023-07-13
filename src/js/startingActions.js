@@ -73,6 +73,10 @@ function createCorruptedSign(name) {
 
     return sign;
 }
+function projectMoreButtonClicked(event)
+{
+    event.stopPropagation();
+}
 function generateProjectLink(projectInfo) {
     projectsContainer = document.getElementById('projects-container');
     let projectItem = {}, projectTextName = {}, projectTextPath = {}, projectMoreButton = {}, projectTextVersion = {};
@@ -99,6 +103,9 @@ function generateProjectLink(projectInfo) {
     });
     projectMoreButton.addEventListener('mouseout', function () {
         this.parentNode.style.backgroundColor = '';
+    });
+    projectMoreButton.addEventListener('click', function (event) {
+        projectMoreButtonClicked(event);
     });
     projectItem.appendChild(projectMoreButton);
 
