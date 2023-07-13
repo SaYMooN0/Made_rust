@@ -61,6 +61,8 @@ function showUnsupportedVersionMessage(version, loader) {
     let dialogStringContent=document.getElementById("warningDialogString");
     dialogStringContent.innerText=warningMessage;
     dialog.showModal();
+    document.getElementById("openGithubBtn").addEventListener('click',function(){window.open("https://github.com/SaYMooN0/Made/issues", '_blank');});
+    document.getElementById("closeWarningDialog").addEventListener('click',function(){dialog.close()});
 
 }
 async function setThemeOnStart() {
