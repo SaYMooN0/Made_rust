@@ -150,8 +150,8 @@ body {
     width: 46%;
     background-color: var(--second-backcolor);
     border-radius: calc(0.45vh + 0.45vw);
-    border-width: calc(0.3vh + 0.3vw);
-    border-color: var(--second-backcolor);
+    border-width: calc(0.05vh + 0.05vw + 4px);
+    border-color: var(--warning-color-bright);
 }
 dialog:focus {
     outline: none;

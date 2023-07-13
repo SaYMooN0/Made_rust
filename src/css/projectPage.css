@@ -12,8 +12,6 @@ body {
 }
 
 .tab-item {
-    padding-right: calc(0.4vw + 2px);
-    padding-left: calc(0.4vw + 2px);
     font-size: calc(0.3vh + 0.5vw + 4px);
     font-weight: 400;
     background-color: var(--second-backcolor);
@@ -28,11 +26,18 @@ body {
     background-color: var(--third-backcolor);
 }
 
-#sortable a {
+.tab-item a {
+    
+    padding-right: calc(0.4vw + 2px);
+    padding-left: calc(0.4vw + 2px);
+    height: 100%;
+    width: 100%;
     text-decoration: none;
     align-self: center;
     color: var(--main-frontcolor);
     font-family: 'Bahnschrift';
+    display: flex;
+    align-items: center;
 
 }
 
@@ -43,11 +48,6 @@ body {
     list-style-type: none;
     padding: 0;
     overflow: hidden;
-}
-
-.tabsContainer li:active {
-    cursor: grabbing;
-    /* Курсор будет указывать, что элемент перетаскивается */
 }
 
 .action-choosing-part {
@@ -67,12 +67,9 @@ body {
     background-color: var(--main-backcolor);
     width: calc(90.5vw - 80px);
     height: 100vh;
-
-
 }
-
 .tabPage {
-    height: calc(97.4vh - 25px - 10px);
+    height: calc(97.4vh - 25px - 30px);
     clear: both;
 }
 

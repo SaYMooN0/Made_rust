@@ -1,15 +1,15 @@
-import tabM from './projectPageFiles/pages/tab.js';
+import welcomePage from './projectPageFiles/pages/welcome.js';
 const { invoke } = window.__TAURI__.tauri;
 const { open } = window.__TAURI__.dialog;
 var project;
-function main() {
-    // document.getElementById('tab-1').innerHTML += tabM;
-}
-function addTab(tabName) {
-    let newTab = $("<li></li>");
-    let newLink = $("<a></a>").attr("href", "#" + tabName).text(tabName);
-    newTab.append(newLink);
-    $("#sortable").append(newTab);
+function addTab(content) {
+    var newTabId = "tab-" + ($(".tabsContainer .tab-item").length + 1);
+
+    var tabItem = $("<li class='tab-item' data-tab='" + newTabId + "'><a href='#" + newTabId + "'>" + newTabId + "</a></li>");
+    $(".tabsContainer").append(tabItem);
+
+    var tabPage = $("<div class='tabPage' id='" + newTabId + "'>" + content + "</div>");
+    $("#containerForPages").append(tabPage);
     $("#containerForPages").tabs("refresh");
     $("#sortable").sortable("refresh");
 }
@@ -52,7 +52,6 @@ function addMasterfulMachineryBlock() {
 window.addEventListener("DOMContentLoaded", async () => {
     await setThemeOnStart();
     project = await invoke("get_current_project");
-    console.log(project);
     if (project.loader == "forge") {
         if (["1.18.2", "1.16.5"].includes(project.version)) {
             addCustomMachineryBlock();
@@ -67,5 +66,5 @@ window.addEventListener("DOMContentLoaded", async () => {
             addCustomMachineryBlock();
         }
     }
-    main();
+    addTab( welcomePage);
 });

@@ -136,21 +136,20 @@ input:focus {
     font-family: 'Figtree';
 }
 
-
-
 .warning-dialog {
     position: absolute;
     top: 0;
     bottom: 14%;
     width: 47%;
-    background-color:var(--second-backcolor);
+    background-color: var(--second-backcolor);
     border-radius: calc(0.35vh + 0.35vw + 7px);
-    border-width: calc(0.1vh + 0.1vw + 4px);
-    border-color:  var(--warning-color-bright);
-    padding-top:0;
+    border-width: calc(0.05vh + 0.05vw + 4px);
+    border-color: var(--warning-color-bright);
+    padding-top: 0;
     padding-left: 1%;
     padding-right: 1%;
 }
+
 .warning-dialog-p {
     font-family: 'Figtree';
     color: var(--main-frontcolor);
@@ -159,21 +158,30 @@ input:focus {
     width: 100%;
     text-align: justify;
 }
+
 .warning-dialog:focus {
     outline: none;
 }
-.warning-dialog-btns-container
-{
+
+.warning-dialog-btns-container {
     width: 100%;
     display: grid;
-    grid-template-columns: 8fr 1fr;
+    grid-template-columns:4fr 1fr 1fr;
+    column-gap: calc(2vw + 10px);
+}
 
-}
-.warning-dialog-btn-ok{
+.warning-dialog-btns-container button {
     width: 100%;
+    font-family: 'Figtree';
+    color: var(--main-frontcolor);
+    font-size: calc(0.3vh + 0.5vw + 2px);
+    font-weight: 200;
+    border: 0;
+    outline: none;
+    background-color: var(--third-backcolor);
 }
-.warning-dialog-btn-open
+.warning-dialog-btns-container button:hover
 {
-    width: 12.5%;
-    margin-left: 80%;
+    background-color: var(--second-brightcolor);
+    cursor: pointer;
 }

@@ -1,0 +1,32 @@
+.welcome-header{
+    position: absolute;
+    color:var(--main-brightcolor);
+    font-family: 'Figtree';
+    letter-spacing: 2px;
+    font-size: calc(1.7vh + 1.4vw + 10px);
+    margin-left: calc(20px + 2vw);  
+    margin-top: 4vh;
+    width: 70%;
+    display: block;
+   
+}
+.welcome-reminder
+{
+    position: absolute;
+    color:var(--main-frontcolor);
+    font-family: 'Figtree';
+    font-size: calc(0.7vh + 0.9vw + 7px);
+    margin-left: calc(20px + 2vw);  
+    margin-right: calc(20px + 2vw);  
+    margin-top: calc(11vh + 18px);
+    text-align: justify;
+   
+}
+.welcome-reminder a
+{
+    color:var(--second-frontcolor);
+}
+.welcome-reminder a:hover
+{
+    color:var(--third-frontcolor);
+}
