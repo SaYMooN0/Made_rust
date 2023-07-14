@@ -1,4 +1,5 @@
-#[derive(Clone)]
+use serde::{Serialize, Deserialize};
+#[derive(Serialize,Deserialize, Clone)]
 pub struct HistotyItem {
     history_string: String,
     mod_name: String,

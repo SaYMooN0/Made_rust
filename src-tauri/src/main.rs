@@ -94,7 +94,6 @@ fn get_creation_info(directory_name: &str) -> String {
         .trim_matches('\"');
     let mut clean_version:String =  version.to_string();
     clean_version.retain(|c| c.is_digit(10) || c == '.');
-    // Find the loader
     let loader_section_start = match contents.find("\"baseModLoader\":") {
         Some(start) => start,
         None => return "-1".to_string(),

@@ -1,4 +1,5 @@
-
+use serde::{Serialize, Deserialize};
+#[derive(Serialize,Deserialize, Clone)]
 pub struct TabInfo {
     name: String,
     content_string: String,

@@ -56,6 +56,7 @@ function addMasterfulMachineryBlock() {
 window.addEventListener("DOMContentLoaded", async () => {
     await setThemeOnStart();
     project = await invoke("get_current_project");
+    console.log(project);
     if (project.loader == "forge") {
         if (["1.18.2", "1.16.5"].includes(project.version)) {
             addCustomMachineryBlock();
