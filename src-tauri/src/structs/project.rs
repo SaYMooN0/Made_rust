@@ -61,7 +61,7 @@ impl Project {
                 if let Some(item) = line.strip_suffix(';') {
                     items_collection.push(item.trim().to_string());
                 }
-            } else if line.starts_with("settings:") {
+            } else if line.starts_with("Settings:") {
                 parsing_tags = false;
                 project_settings_string = lines.collect::<Vec<&str>>().join("\n");
                 break;

@@ -10,9 +10,10 @@ pub struct HistotyItem {
     string_num: i32,
 }
 impl HistotyItem {
-    pub fn new() -> HistotyItem {
+    pub fn new(info_string:String) -> HistotyItem {
+        
         HistotyItem {
-            history_string: String::from(""),
+            history_string: info_string,
             mod_name:  String::from(""),
             craft_type:  String::from(""),
             inputs: [].to_vec(),
