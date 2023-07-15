@@ -180,7 +180,15 @@ body {
     stroke: var(--second-frontcolor);
     stroke-width: 3.4;
 }
-
+.action-icon-remove{
+    height: 50%;
+    margin-left: 4px;
+    aspect-ratio: 1/1;
+    margin-top: calc(10px - 1%);
+}
+.action-icon-remove path{
+    stroke: var(--second-frontcolor);
+}
 .action-label {
     font-family: 'Bahnschrift';
     font-size: calc(0.8vh + 1vw + 2px);

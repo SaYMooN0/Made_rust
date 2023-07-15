@@ -98,7 +98,7 @@ impl Project {
         writer.write_fmt(format_args!("loader:{}\n", loader))?;
         writer.write_all(b"items_collection:\n{\n\n}\n")?;
         writer.write_all(b"tags_collection:\n{\n\n}\n")?;
-        writer.write_fmt(format_args!("settings:\n"))?;
+        writer.write_all(b"Settings:\nDoLeaveComments:true\nHistory:\n")?;
         writer.flush()?;
 
         Ok(())
