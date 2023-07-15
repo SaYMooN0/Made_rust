@@ -75,9 +75,9 @@ body {
     align-items: center;
     justify-content: flex-start;
     font-weight: 700;
-    margin-top: -0.9%;
+    margin-top: -1.1%;
     margin-left: 1%;
-    width: 90%;
+    width: 98%;
 
 }
 
@@ -86,11 +86,11 @@ body {
     height: 80%;
     color: var(--main-frontcolor);
     font-family: 'Figtree';
-    font-size: calc(0.65vh + 0.55vw + 2px);
+    font-size: calc(0.63vh + 0.54vw + 2px);
     text-align: left;
     margin-top: -2%;
     margin-left: 1%;
-    width: 90%;
+    width: 92%;
 }
 
 .project-text-version {

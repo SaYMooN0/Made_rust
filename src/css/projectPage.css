@@ -227,6 +227,42 @@ body {
     display: grid;
     grid-template-columns: 1fr 4fr;
     cursor: pointer;
+   
 }
 
-.bottom-action-btn:hover {}
+.bottom-action-btn path {
+    fill: var(--second-frontcolor);
+
+}
+.bottom-action-btn:hover{
+    border-left: var(--second-frontcolor) calc(0.08vw + 3px) solid;
+}
+.collection-btn {
+    height: 70%;
+    margin-left: 10%;
+    aspect-ratio: 1/1;
+    align-self: center;
+}
+
+.history-btn {
+    height: 100%;
+    margin-left: 5%;
+    aspect-ratio: 1/1;
+    margin-top: calc(5px + 8%);
+}
+
+.settings-btn {
+    height: 80%;
+    margin-left: 2%;
+    aspect-ratio: 1/1;
+    align-self: center;
+    
+}
+.bottom-action-label {
+    font-family: 'Bahnschrift';
+    font-size: calc(0.7vh + 0.7vw + 6px);
+    align-self: center;
+    font-weight: 400;
+    color: var(--second-frontcolor);
+    margin-left: calc(15px - 0.3vw);
+}
