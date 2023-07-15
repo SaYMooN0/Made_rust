@@ -79,8 +79,7 @@ body {
 .new-modification-btn {
     margin-top: calc(0.1vw + 2px);
     width: 100%;
-    height: calc(34px + 2.4vh);
-    max-height: calc(36px + 3vh);
+    height: calc(32px + 2.2vh);
     display: grid;
     grid-template-columns: 1fr 4fr;
     cursor: pointer;
@@ -197,7 +196,7 @@ body {
 
 .action-label {
     font-family: 'Bahnschrift';
-    font-size: calc(0.8vh + 1vw + 2px);
+    font-size: calc(0.74vh + 0.95vw + 2px);
     margin-top: calc(17px - 2.2%);
     font-weight: 400;
     color: var(--second-frontcolor);
@@ -215,17 +214,17 @@ body {
 .bottom-action-btns-container {
     position: absolute;
     width: 100%;
-    bottom: calc(4px + 0.8vh);
+    bottom: calc(1vh - 4px);
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     row-gap: calc(0.1vh + 1px);
-    height: calc(34px * 3 + 2.4vh * 3);
+    height: calc(32px * 3 + 2.2vh * 3);
 }
 
 .bottom-action-btn {
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 5fr;
     cursor: pointer;
    
 }
@@ -235,32 +234,32 @@ body {
 
 }
 .bottom-action-btn:hover{
-    border-left: var(--second-frontcolor) calc(0.08vw + 3px) solid;
+    border-left: var(--second-frontcolor) calc(0.07vw + 2px) solid;
 }
 .collection-btn {
-    height: 70%;
-    margin-left: 10%;
+    height: calc(98% - 16px);
+    margin-left: 12%;
     aspect-ratio: 1/1;
     align-self: center;
 }
 
 .history-btn {
-    height: 100%;
-    margin-left: 5%;
+    height: calc(92% - 12px);
+    margin-left: 7%;
     aspect-ratio: 1/1;
-    margin-top: calc(5px + 8%);
+    align-self: center;
 }
 
 .settings-btn {
-    height: 80%;
-    margin-left: 2%;
+    height: calc(94% - 10px);
+    margin-left: 4%;
     aspect-ratio: 1/1;
     align-self: center;
     
 }
 .bottom-action-label {
     font-family: 'Bahnschrift';
-    font-size: calc(0.7vh + 0.7vw + 6px);
+    font-size: calc(0.74vh + 0.95vw + 2px);
     align-self: center;
     font-weight: 400;
     color: var(--second-frontcolor);
