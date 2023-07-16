@@ -24,6 +24,13 @@ $(function () {
     });
     $("#sortable").disableSelection();
 });
+function switchToTab(tabName) {
+    var newTabId = "tab-" + tabName;
+    var tabIndex = $(".tabsContainer .tab-item[data-tab='" + newTabId + "']").index();
+    $("#containerForPages").tabs("option", "active", tabIndex);
+}
+
+
 async function setThemeOnStart() {
     var linkElement = document.getElementById('theme-link');
     let theme = await invoke("get_current_theme_name");
@@ -56,4 +63,5 @@ window.addEventListener("DOMContentLoaded", async () => {
         }
     }
     addWelcomeTab();
+    switchToTab("welcome");
 });

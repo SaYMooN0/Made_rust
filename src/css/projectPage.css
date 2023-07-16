@@ -88,7 +88,7 @@ body {
 }
 
 .new-modification-btn:hover {
-    border-left: var(--second-frontcolor) calc(0.08vw + 3px) solid;
+    border-left: var(--second-frontcolor) calc(0.07vw + 2px) solid;
 
 }
 
