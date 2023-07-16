@@ -7,12 +7,26 @@ function addTab(content, name) {
         name = ($(".tabsContainer .tab-item").length + 1);
     }
     var newTabId = "tab-" + name;
-    var tabItem = $("<li class='tab-item' data-tab='" + newTabId + "'><a href='#" + newTabId + "'>" + name + "</a></li>");
+    var tabItem = $("<li class='tab-item' data-tab='" + newTabId + "'><a href='#" + newTabId + "'>" + name + `</a>
+    <svg class="tab-cross-btn" viewBox="0 0 24 24" fill="none">
+        <path d="M16 8L8 16M8.00001 8L16 16" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg></li>`);
     $(".tabsContainer").append(tabItem);
     var tabPage = $("<div class='tabPage' id='" + newTabId + "'>" + content + "</div>");
     $("#containerForPages").append(tabPage);
     $("#containerForPages").tabs("refresh");
     $("#sortable").sortable("refresh");
+    let tabCrossBtn = tabItem.find(".tab-cross-btn");
+    tabCrossBtn[0].addEventListener('click', closeTab);
+}
+function closeTab(event) {
+    event.stopPropagation();
+    let tabItem = $(this).closest('.tab-item');
+    let tabId = tabItem.attr('data-tab');
+    tabItem.remove();
+    $("#" + tabId).remove();
+    $("#containerForPages").tabs("refresh");
+    $("#containerForPages").tabs("option", "active", 0);
 }
 function addWelcomeTab() {
     addTab(welcomePage, "welcome")
@@ -38,11 +52,11 @@ async function setThemeOnStart() {
 }
 function addCustomMachineryBlock() {
     let machineBtnContainer = document.getElementById("machine-btn");
-    machineBtnContainer.style.display="grid";
+    machineBtnContainer.style.display = "grid";
 }
 function addMasterfulMachineryBlock() {
     let multiblockBtnContainer = document.getElementById("multiblock-btn");
-    multiblockBtnContainer.style.display="grid";
+    multiblockBtnContainer.style.display = "grid";
 }
 window.addEventListener("DOMContentLoaded", async () => {
     await setThemeOnStart();
@@ -63,5 +77,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         }
     }
     addWelcomeTab();
+    addTab(welcomePage, "12")
+    addTab("<p>123</p>", "18")
     switchToTab("welcome");
 });
